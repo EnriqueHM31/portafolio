@@ -10,7 +10,8 @@ const { title, icono } = Astro.props
 		<link rel="shortcut icon" href="./icono.svg" type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script type="module" src="/src/components/Fondo.js" defer></script>
+		<link rel="stylesheet" href="/src/assets/fondo.css" />
+		<script src="/src/components/Fondo.js" defer></script>
 	</head>
 	<body>
 		<slot />
