@@ -5,103 +5,254 @@ interface Props {
 const { tecnologia } = Astro.props as Props
 ---
 
-<li class="icon-content">
-	<div class="container-icon" aria-label={tecnologia} data-social={tecnologia}>
-		<div class="filled"></div>
+<button type="button" class="btn" data-tecnologia={tecnologia}>
+	<strong>
 		<slot />
+		{tecnologia}
+	</strong>
+	<div id="container-stars">
+		<div id="stars"></div>
 	</div>
-	<div class="tooltip">{tecnologia}</div>
-</li>
+
+	<div id="glow">
+		<div class="circle"></div>
+		<div class="circle"></div>
+	</div>
+</button>
 
 <style>
-	li::after {
-		content: '';
-		display: block;
-		height: 0;
-		transition: height 0.3s ease-in-out;
-		pointer-events: none;
-		min-width: clamp(2rem, 5vw, 5rem);
+	.btn[data-tecnologia='HTML'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 45%, #000000 67%, #161a25 87%);
+	}
+	.btn[data-tecnologia='CSS'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 45%, #000000 67%, #161a25 87%);
+	}
+	.btn[data-tecnologia='REACT'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 45%, #000000 67%, #161a25 87%);
+	}
+	.btn[data-tecnologia='ASTRO'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #ff5d01 10%, #ff5d01 45%, #000000 67%, #161a25 87%);
+	}
+	.btn[data-tecnologia='JS'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #f0db4f 10%, #f0db4f 45%, #000000 67%, #161a25 87%);
 	}
 
-	li:hover::after {
-		height: 1rem;
-	}
-
-	.icon-content {
-		margin: 0 1rem;
-		position: relative;
-	}
-	.icon-content .tooltip {
-		position: absolute;
-		bottom: -3rem;
-		left: 50%;
-		transform: translateX(-50%);
-		color: #fff;
-		padding: 0.6rem 1rem;
-		border-radius: 0.5rem;
-		opacity: 0;
-		pointer-events: none;
-		visibility: hidden;
-		font-size: clamp(1.3rem, 5vw, 1.5rem);
-		transition:
-			opacity 0.3s ease,
-			visibility 0.3s ease,
-			bottom 0.3s ease;
-	}
-	.icon-content:hover .tooltip {
-		opacity: 1;
-		visibility: visible;
-		bottom: -4rem;
-	}
-	.icon-content .container-icon {
-		position: relative;
-		overflow: hidden;
+	.btn {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: clamp(2rem, 5vw, 8rem);
-		height: clamp(2rem, 5vw, 6rem);
-		border-radius: 1rem;
-		color: var(--negro);
-		background-color: var(--blanco);
-		transition:
-			box-shadow 0.3s ease-in-out,
-			color 0.3s ease-in-out;
-	}
-	.icon-content .container-icon:hover {
-		box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
-	}
-	.icon-content .container-icon:hover {
-		color: var(--blanco);
-	}
-	.icon-content .container-icon .filled {
-		position: absolute;
-		top: auto;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 0;
-		transition: height 0.3s ease-in-out;
-	}
-	.icon-content .container-icon:hover .filled {
-		height: 100%;
-		z-index: 1;
+		width: fit-content;
+		padding: 1rem 2rem;
+		overflow: hidden;
+		height: clamp(2rem, 5vw, 4rem);
+		background-size: 300% 300%;
+		backdrop-filter: blur(1rem);
+		border-radius: 5rem;
+		transition: 0.5s;
+		animation: gradient_301 5s ease infinite;
+		border: double 4px transparent;
+		background-origin: border-box;
+		background-clip: content-box, border-box;
 	}
 
-	.icon-content .container-icon[data-social='HTML'] .filled,
-	.icon-content .container-icon[data-social='HTML'] ~ .tooltip {
-		background-color: #e34f26;
+	#container-stars {
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		transition: 0.5s;
+		backdrop-filter: blur(1rem);
+		border-radius: 5rem;
 	}
-	.icon-content .container-icon[data-social='CSS'] .filled,
-	.icon-content .container-icon[data-social='CSS'] ~ .tooltip {
-		background-color: #264de4;
+
+	strong {
+		z-index: 2;
+		font-size: 12px;
+		letter-spacing: 5px;
+		color: #ffffff;
+		text-shadow: 0 0 4px white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
 	}
-	.icon-content .container-icon[data-social='React'] .filled,
-	.icon-content .container-icon[data-social='React'] ~ .tooltip {
-		background-color: #58c4dc;
+
+	#glow {
+		position: absolute;
+		display: flex;
+		width: 12rem;
 	}
-	.icon-content .container-icon[data-social='telegram'] .filled,
-	.icon-content .container-icon[data-social='telegram'] ~ .tooltip {
-		background-color: #0088cc;
+
+	.circle-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		animation: orbit 5s linear infinite;
+	}
+
+	.circle {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		filter: blur(2rem);
+	}
+
+	.btn[data-tecnologia='HTML'] .circle:nth-of-type(1) {
+		background: #e34f26;
+	}
+	.btn[data-tecnologia='CSS'] .circle:nth-of-type(1) {
+		background: #264de4;
+	}
+	.btn[data-tecnologia='REACT'] .circle:nth-of-type(1) {
+		background: #58c4dc;
+	}
+	.btn[data-tecnologia='ASTRO'] .circle:nth-of-type(1) {
+		background: #ff5d01;
+	}
+	.btn[data-tecnologia='JS'] .circle:nth-of-type(1) {
+		background: #f0db4f;
+	}
+
+	.circle:nth-of-type(1) {
+		animation: orbit 8s linear infinite;
+	}
+
+	.btn[data-tecnologia='HTML'] .circle:nth-of-type(2) {
+		background: #e34f26;
+	}
+	.btn[data-tecnologia='CSS'] .circle:nth-of-type(2) {
+		background: #264de4;
+	}
+	.btn[data-tecnologia='REACT'] .circle:nth-of-type(2) {
+		background: #58c4dc;
+	}
+	.btn[data-tecnologia='ASTRO'] .circle:nth-of-type(2) {
+		background: #ff5d01;
+	}
+	.btn[data-tecnologia='JS'] .circle:nth-of-type(2) {
+		background: #f0db4f;
+	}
+
+	.circle:nth-of-type(2) {
+		animation: orbit 10s linear infinite;
+	}
+
+	.btn:hover #container-stars {
+		z-index: 1;
+		background-color: #161a25;
+	}
+
+	.btn:hover {
+		transform: scale(1.1);
+	}
+
+	.btn:active[data-tecnologia='HTML'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 45%, #000000 67%, #161a25 87%);
+	}
+	.btn:active[data-tecnologia='CSS'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 45%, #000000 67%, #161a25 87%);
+	}
+	.btn:active[data-tecnologia='REACT'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 45%, #000000 67%, #161a25 87%);
+	}
+
+	@keyframes orbit {
+		from {
+			transform: rotate(0deg) translateX(100px) rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg) translateX(100px) rotate(-360deg);
+		}
+	}
+
+	#stars {
+		position: relative;
+		background: transparent;
+		width: 200rem;
+		height: 200rem;
+	}
+
+	#stars::after {
+		content: '';
+		position: absolute;
+		top: -10rem;
+		left: -100rem;
+		width: 100%;
+		height: 100%;
+		animation: animStarRotate 90s linear infinite;
+	}
+
+	#stars::after {
+		background-image: radial-gradient(#ffffff 1px, transparent 1%);
+		background-size: 50px 50px;
+	}
+
+	#stars::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -50%;
+		width: 170%;
+		height: 500%;
+		animation: animStar 60s linear infinite;
+	}
+
+	#stars::before {
+		background-image: radial-gradient(#ffffff 1px, transparent 1%);
+		background-size: 50px 50px;
+		opacity: 0.5;
+	}
+
+	@keyframes animStar {
+		from {
+			transform: translateY(0);
+		}
+
+		to {
+			transform: translateY(-135rem);
+		}
+	}
+
+	@keyframes animStarRotate {
+		from {
+			transform: rotate(360deg);
+		}
+
+		to {
+			transform: rotate(0);
+		}
+	}
+
+	@keyframes gradient_301 {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes pulse_3011 {
+		0% {
+			transform: scale(0.75);
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+		}
+
+		70% {
+			transform: scale(1);
+			box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+		}
+
+		100% {
+			transform: scale(0.75);
+			box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		}
 	}
 </style>
