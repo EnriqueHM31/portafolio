@@ -5,6 +5,8 @@ import Tecnologias from './Tecnologias.astro'
 import HTML from './Iconos/HTML.astro'
 import CSS from './Iconos/CSS.astro'
 import React from './Iconos/React.astro'
+import IconoAstro from './Iconos/ic_Astro.astro'
+import JS from './Iconos/JS.astro'
 
 import { getCollection } from 'astro:content'
 
@@ -34,7 +36,7 @@ const proyectos = await getCollection('proyectos')
 							<h3>{title}</h3>
 							<p>{slug}</p>
 
-							<ul class="example-2">
+							<ul class="lista-tecnologias">
 								{Object.keys(tecnologias).map((tecnologia) => {
 									return (
 										(tecnologia === 'HTML' && (
@@ -47,9 +49,19 @@ const proyectos = await getCollection('proyectos')
 												<CSS />
 											</Tecnologias>
 										)) ||
-										(tecnologia === 'React' && (
+										(tecnologia === 'REACT' && (
 											<Tecnologias tecnologia={tecnologia}>
 												<React />
+											</Tecnologias>
+										)) ||
+										(tecnologia === 'ASTRO' && (
+											<Tecnologias tecnologia={tecnologia}>
+												<IconoAstro />
+											</Tecnologias>
+										)) ||
+										(tecnologia === 'JS' && (
+											<Tecnologias tecnologia={tecnologia}>
+												<JS />
 											</Tecnologias>
 										))
 									)
@@ -99,9 +111,17 @@ const proyectos = await getCollection('proyectos')
 		color: var(--blanco);
 		line-height: 1.5;
 	}
-	.example-2 {
+	.lista-tecnologias {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+		max-width: 80%;
+		margin: 0 auto;
+	}
+
+	.lista-tecnologias > * {
+		flex: 1 0 10rem;
 	}
 </style>
