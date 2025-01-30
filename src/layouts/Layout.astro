@@ -11,7 +11,7 @@ const { title, icono } = Astro.props
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="stylesheet" href="/src/assets/fondo.css" />
-		<script src="/src/components/Fondo.js" defer></script>
+		<script src="/src/lib/Fondo.js" defer is:inline></script>
 	</head>
 	<body>
 		<slot />
@@ -22,7 +22,7 @@ const { title, icono } = Astro.props
 	:root {
 		--blanco: #fff;
 		--negro: #000;
-		--cyan: #00fbfb;
+		--cyan: #04ffe2;
 	}
 	*,
 	*::before,
