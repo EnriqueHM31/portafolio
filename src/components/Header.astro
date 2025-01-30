@@ -1,6 +1,7 @@
 ---
-import IconoGitHub from './IconoGitHub.astro'
-import IconoEmail from './iconoEmail.astro'
+import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
+import IconoEmail from '../components/Iconos/iconoEmail.astro'
+import { Image } from '@astrojs/image/components'
 ---
 
 <section class="seccion-header">
@@ -22,12 +23,13 @@ import IconoEmail from './iconoEmail.astro'
 	</div>
 
 	<div class="image-header">
-		<img
-			src="./src/assets/header.webp"
-			alt="Imagen que representa el portafolio de mi perfil"
+		<Image
+			src="/header.webp"
+			alt="portada"
+			width={400}
+			height={400}
+			loading="eager"
 		/>
-
-		<div class="forma"></div>
 	</div>
 </section>
 
@@ -68,6 +70,7 @@ import IconoEmail from './iconoEmail.astro'
 		align-items: center;
 		width: 100%;
 		gap: 2rem;
+		margin-top: 3rem;
 	}
 
 	.contenedor-iconos-contacto a {
@@ -80,38 +83,24 @@ import IconoEmail from './iconoEmail.astro'
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.forma {
-		position: absolute;
-		width: 80%;
-		height: max-content;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: -1;
-		aspect-ratio: 1 /1;
-		background-color: var(--cyan);
-		opacity: 0.5;
-		clip-path: polygon(
-			0% 0%,
-			0% 100%,
-			11% 100%,
-			10% 12%,
-			90% 13%,
-			90% 90%,
-			11% 90%,
-			10% 100%,
-			100% 100%,
-			100% 0%
-		);
-		border-radius: 1rem;
+		overflow: hidden;
 	}
 
 	.image-header img {
-		width: 70%;
+		width: 80%;
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
 		filter: drop-shadow(0 0 1rem var(--cyan));
+		animation: astro 1s linear infinite alternate;
+		rotate: 20deg;
+	}
+
+	@keyframes astro {
+		0% {
+			transform: translateY(0);
+		}
+		100% {
+			transform: translateY(-5rem);
+		}
 	}
 </style>
