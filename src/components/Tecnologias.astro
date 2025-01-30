@@ -1,0 +1,107 @@
+---
+interface Props {
+	tecnologia: string
+}
+const { tecnologia } = Astro.props as Props
+---
+
+<li class="icon-content">
+	<div class="container-icon" aria-label={tecnologia} data-social={tecnologia}>
+		<div class="filled"></div>
+		<slot />
+	</div>
+	<div class="tooltip">{tecnologia}</div>
+</li>
+
+<style>
+	li::after {
+		content: '';
+		display: block;
+		height: 0;
+		transition: height 0.3s ease-in-out;
+		pointer-events: none;
+		min-width: clamp(2rem, 5vw, 5rem);
+	}
+
+	li:hover::after {
+		height: 1rem;
+	}
+
+	.icon-content {
+		margin: 0 1rem;
+		position: relative;
+	}
+	.icon-content .tooltip {
+		position: absolute;
+		bottom: -3rem;
+		left: 50%;
+		transform: translateX(-50%);
+		color: #fff;
+		padding: 0.6rem 1rem;
+		border-radius: 0.5rem;
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		font-size: clamp(1.3rem, 5vw, 1.5rem);
+		transition:
+			opacity 0.3s ease,
+			visibility 0.3s ease,
+			bottom 0.3s ease;
+	}
+	.icon-content:hover .tooltip {
+		opacity: 1;
+		visibility: visible;
+		bottom: -4rem;
+	}
+	.icon-content .container-icon {
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: clamp(2rem, 5vw, 8rem);
+		height: clamp(2rem, 5vw, 6rem);
+		border-radius: 1rem;
+		color: var(--negro);
+		background-color: var(--blanco);
+		transition:
+			box-shadow 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+	}
+	.icon-content .container-icon:hover {
+		box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+	}
+	.icon-content .container-icon:hover {
+		color: var(--blanco);
+	}
+	.icon-content .container-icon .filled {
+		position: absolute;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		transition: height 0.3s ease-in-out;
+	}
+	.icon-content .container-icon:hover .filled {
+		height: 100%;
+		z-index: 1;
+	}
+
+	.icon-content .container-icon[data-social='HTML'] .filled,
+	.icon-content .container-icon[data-social='HTML'] ~ .tooltip {
+		background-color: #e34f26;
+	}
+	.icon-content .container-icon[data-social='CSS'] .filled,
+	.icon-content .container-icon[data-social='CSS'] ~ .tooltip {
+		background-color: #264de4;
+	}
+	.icon-content .container-icon[data-social='React'] .filled,
+	.icon-content .container-icon[data-social='React'] ~ .tooltip {
+		background-color: #58c4dc;
+	}
+	.icon-content .container-icon[data-social='telegram'] .filled,
+	.icon-content .container-icon[data-social='telegram'] ~ .tooltip {
+		background-color: #0088cc;
+	}
+</style>
