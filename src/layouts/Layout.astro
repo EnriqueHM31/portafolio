@@ -1,22 +1,68 @@
+---
+const { title, icono } = Astro.props
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href="./icono.svg" type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<script type="module" src="/src/components/Fondo.js" defer></script>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	:root {
+		--blanco: #fff;
+		--negro: #000;
+		--cyan: #00fbfb;
+	}
+	*,
+	*::before,
+	*::after {
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+		box-sizing: border-box;
+		list-style: none;
+		text-decoration: none;
+	}
+	html {
+		font-size: 10px;
+		background-color: var(--negro);
+	}
+
+	@font-face {
+		font-family: 'monse';
+		src: url('../assets/monserrat.woff2') format('woff2');
+	}
+
+	@font-face {
+		font-family: 'out';
+		src: url('../assets/out.woff2') format('woff2');
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: 'monse', sans-serif;
+	}
+
+	a,
+	p,
+	strong,
+	input,
+	button,
+	textarea,
+	select {
+		font-family: 'out', sans-serif;
 	}
 </style>
