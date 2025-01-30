@@ -1,6 +1,6 @@
 ---
 title: 'Proyecto 1'
-tecnologias: { HTML: 'HTML', CSS: 'CSS', React: 'React' }
+tecnologias: { HTML: 'HTML', CSS: 'CSS', REACT: 'REACT', ASTRO: 'ASTRO', JS: 'JS' }
 image: 'proyecto.jpg'
 ---
 
