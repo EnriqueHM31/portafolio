@@ -1,0 +1,117 @@
+---
+import IconoGitHub from './IconoGitHub.astro'
+import IconoEmail from './iconoEmail.astro'
+---
+
+<section class="seccion-header">
+	<div class="contenido-header">
+		<h1 class="titulo">Frontend Developer</h1>
+		<p class="descripcion-header">
+			"Detrás de cada clic, cada transición, hay un diseño y código
+			frontend trabajando para hacer que todo fluya."
+		</p>
+		<div class="contenedor-iconos-contacto">
+			<a href="https://github.com/EnriqueHM31" target="_blank"
+				>{(<IconoGitHub />)}</a
+			>
+			<a
+				href="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo"
+				>{(<IconoEmail />)}
+			</a>
+		</div>
+	</div>
+
+	<div class="image-header">
+		<img
+			src="./src/assets/header.webp"
+			alt="Imagen que representa el portafolio de mi perfil"
+		/>
+
+		<div class="forma"></div>
+	</div>
+</section>
+
+<style>
+	.seccion-header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		max-width: 95%;
+		min-height: 100dvh;
+		padding: 2rem;
+		margin: 0 auto;
+	}
+
+	.contenido-header {
+		width: min(55%, 100%);
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.titulo {
+		font-size: clamp(2rem, 6vw, 7rem);
+		color: var(--blanco);
+		text-shadow: 0 0 1rem var(--cyan);
+	}
+
+	.descripcion-header {
+		font-size: clamp(1.5rem, 5vw, 2.5rem);
+		color: var(--blanco);
+		margin-top: 1rem;
+		line-height: 1.5;
+	}
+
+	.contenedor-iconos-contacto {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 2rem;
+	}
+
+	.contenedor-iconos-contacto a {
+		height: auto;
+	}
+
+	.image-header {
+		width: min(40%, 100%);
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.forma {
+		position: absolute;
+		width: 80%;
+		height: max-content;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+		aspect-ratio: 1 /1;
+		background-color: var(--cyan);
+		opacity: 0.5;
+		clip-path: polygon(
+			0% 0%,
+			0% 100%,
+			11% 100%,
+			10% 12%,
+			90% 13%,
+			90% 90%,
+			11% 90%,
+			10% 100%,
+			100% 100%,
+			100% 0%
+		);
+		border-radius: 1rem;
+	}
+
+	.image-header img {
+		width: 70%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		filter: drop-shadow(0 0 1rem var(--cyan));
+	}
+</style>
