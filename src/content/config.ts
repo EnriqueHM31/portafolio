@@ -6,14 +6,18 @@ const proyectos = defineCollection({
         title: z.string(),
         tecnologias: z.object({
             HTML: z.string().optional(),
+            REACT: z.string().optional(),
             CSS: z.string().optional(),
             JS: z.string().optional(),
-            REACT: z.string().optional(),
             ASTRO: z.string().optional(),
 
         }),
-        image: z.string(),
-    })
+        images: z.object({
+            image: z.string(),
+            thumbnail: z.string(),
+            imageTitle: z.string(),
+        }),
+    }),
 })
 
 export const collections = { proyectos }
