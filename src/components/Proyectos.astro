@@ -1,12 +1,9 @@
 ---
 import CardProyecto from './CardProyecto.astro'
-import { type Proyecto } from '../types'
 
 import { getCollection } from 'astro:content'
 
 const proyectos = await getCollection('proyectos')
-
-const { data, slug } = proyectos[0] as Proyecto
 ---
 
 <section class="seccion">
@@ -17,15 +14,21 @@ const { data, slug } = proyectos[0] as Proyecto
 	</header>
 
 	<main class="contenido-proyectos" id="proyectos">
-		{(<CardProyecto data={data} slug={slug} />)}
+		{
+			proyectos.map((proyecto) => {
+				return <CardProyecto data={proyecto.data} slug={proyecto.slug} />
+			})
+		}
 	</main>
 
 	<style>
 		.contenido-proyectos {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			width: 90%;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+			width: 95%;
+			overflow-x: hidden;
+			gap: 3rem;
+			padding: 10rem;
 		}
 	</style>
 </section>
