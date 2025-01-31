@@ -41,7 +41,8 @@ const { tecnologia } = Astro.props as Props
 	}
 
 	.btn {
-		width: 100%;
+		width: clamp(8rem, 9vw, 12rem);
+		height: clamp(3rem, 4vw, 4rem);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -54,6 +55,7 @@ const { tecnologia } = Astro.props as Props
 		border: double 0.4rem transparent;
 		background-origin: border-box;
 		background-clip: content-box, border-box;
+		flex: 1 0 10rem;
 	}
 
 	#container-stars {
