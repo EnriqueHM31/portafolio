@@ -10,6 +10,7 @@ const proyectos = defineCollection({
             CSS: z.string().optional(),
             JS: z.string().optional(),
             ASTRO: z.string().optional(),
+            PHP: z.string().optional(),
 
         }),
         images: z.object({
