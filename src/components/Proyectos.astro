@@ -9,7 +9,7 @@ const proyectos = await getCollection('proyectos')
 <section class="seccion">
 	<header>
 		<div class="typing">
-			<h3>Proyectos</h3>
+			<h2>Proyectos</h2>
 		</div>
 	</header>
 
@@ -20,14 +20,14 @@ const proyectos = await getCollection('proyectos')
 			})
 		}
 	</main>
-
-	<style>
-		.contenido-proyectos {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
-			width: 95%;
-			gap: 3rem;
-			padding: 5rem;
-		}
-	</style>
 </section>
+
+<style>
+	.contenido-proyectos {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+		width: 95%;
+		gap: 3rem;
+		padding: 5rem;
+	}
+</style>
