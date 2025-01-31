@@ -36,14 +36,16 @@ const { tecnologia } = Astro.props as Props
 	.btn[data-tecnologia='JS'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #f0db4f 10%, #f0db4f 45%, #000000 67%, #161a25 87%);
 	}
+	.btn[data-tecnologia='PHP'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #484c89 10%, #484c89 45%, #000000 67%, #161a25 87%);
+	}
 
 	.btn {
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 1rem 2rem;
-		overflow: hidden;
-		width: 100%;
 		background-size: 300% 300%;
 		backdrop-filter: blur(1rem);
 		border-radius: 2rem;
@@ -113,6 +115,9 @@ const { tecnologia } = Astro.props as Props
 	.btn[data-tecnologia='JS'] .circle:nth-of-type(1) {
 		background: #f0db4f;
 	}
+	.btn[data-tecnologia='PHP'] .circle:nth-of-type(1) {
+		background: #484c89;
+	}
 
 	.circle:nth-of-type(1) {
 		animation: orbit 8s linear infinite;
@@ -133,6 +138,9 @@ const { tecnologia } = Astro.props as Props
 	.btn[data-tecnologia='JS'] .circle:nth-of-type(2) {
 		background: #f0db4f;
 	}
+	.btn[data-tecnologia='PHP'] .circle:nth-of-type(2) {
+		background: #484c89;
+	}
 
 	.circle:nth-of-type(2) {
 		animation: orbit 10s linear infinite;
@@ -148,13 +156,22 @@ const { tecnologia } = Astro.props as Props
 	}
 
 	.btn:active[data-tecnologia='HTML'] {
-		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 45%, #000000 67%, #161a25 87%);
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 60%, #000000 67%, #161a25 87%);
 	}
 	.btn:active[data-tecnologia='CSS'] {
-		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 45%, #000000 67%, #161a25 87%);
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 60%, #000000 67%, #161a25 87%);
 	}
 	.btn:active[data-tecnologia='REACT'] {
-		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 45%, #000000 67%, #161a25 87%);
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 60%, #000000 67%, #161a25 87%);
+	}
+	.btn:active[data-tecnologia='ASTRO'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #ff5d01 10%, #ff5d01 60%, #000000 67%, #161a25 87%);
+	}
+	.btn:active[data-tecnologia='JS'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #f0db4f 10%, #f0db4f 60%, #000000 67%, #161a25 87%);
+	}
+	.btn:active[data-tecnologia='PHP'] {
+		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #484c89 10%, #484c89 60%, #000000 67%, #161a25 87%);
 	}
 
 	@keyframes orbit {
