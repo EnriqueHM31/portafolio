@@ -4,32 +4,18 @@ import IconoEmail from '../components/Iconos/iconoEmail.astro'
 import { Image } from '@astrojs/image/components'
 ---
 
-<section class="seccion-header">
+<section class="seccion-header" id="inicio">
 	<div class="contenido-header">
 		<h1 class="titulo">Frontend Developer</h1>
-		<p class="descripcion-header">
-			"Detrás de cada clic, cada transición, hay un diseño y código
-			frontend trabajando para hacer que todo fluya."
-		</p>
+		<p class="descripcion-header">"Detrás de cada clic, cada transición, hay un diseño y código frontend trabajando para hacer que todo fluya."</p>
 		<div class="contenedor-iconos-contacto">
-			<a href="https://github.com/EnriqueHM31" target="_blank"
-				>{(<IconoGitHub />)}</a
-			>
-			<a
-				href="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo"
-				>{(<IconoEmail />)}
-			</a>
+			<a href="https://github.com/EnriqueHM31" target="_blank">{(<IconoGitHub />)}</a>
+			<a href="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo">{(<IconoEmail />)} </a>
 		</div>
 	</div>
 
 	<div class="image-header">
-		<Image
-			src="/header.webp"
-			alt="portada"
-			width={400}
-			height={400}
-			loading="eager"
-		/>
+		<Image src="/header.webp" alt="portada" width={400} height={400} loading="eager" />
 	</div>
 </section>
 
