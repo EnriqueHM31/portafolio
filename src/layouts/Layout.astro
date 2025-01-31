@@ -36,6 +36,7 @@ const { title, icono } = Astro.props
 	html {
 		font-size: 10px;
 		background-color: var(--negro);
+		scroll-behavior: smooth;
 	}
 
 	@font-face {
@@ -73,7 +74,7 @@ const { title, icono } = Astro.props
 	}
 
 	.seccion {
-		margin: 5rem 0;
+		padding: 5rem 0;
 		min-height: 100dvh;
 		display: flex;
 		flex-direction: column;
