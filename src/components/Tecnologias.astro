@@ -1,8 +1,7 @@
 ---
-interface Props {
-	tecnologia: string
-}
-const { tecnologia } = Astro.props as Props
+import type { Tecnologia } from '../types'
+
+const { tecnologia } = Astro.props as Tecnologia
 ---
 
 <li class="btn" data-tecnologia={tecnologia}>

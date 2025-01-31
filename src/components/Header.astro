@@ -2,12 +2,15 @@
 import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
 import IconoEmail from '../components/Iconos/iconoEmail.astro'
 import { Image } from '@astrojs/image/components'
+import { INFORMACION_HEADER } from '../lib/constantes'
+
+const { title, descripcion } = INFORMACION_HEADER
 ---
 
 <section class="seccion-header" id="inicio">
 	<div class="contenido-header">
-		<h1 class="titulo">Frontend Developer</h1>
-		<p class="descripcion-header">"Detrás de cada clic, cada transición, hay un diseño y código frontend trabajando para hacer que todo fluya."</p>
+		<h1 class="titulo">{title}</h1>
+		<p class="descripcion-header">{descripcion}</p>
 		<div class="contenedor-iconos-contacto">
 			<a href="https://github.com/EnriqueHM31" target="_blank">{(<IconoGitHub />)}</a>
 			<a href="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo">{(<IconoEmail />)} </a>

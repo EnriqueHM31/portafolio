@@ -6,12 +6,21 @@ import React from './Iconos/ic_React.astro'
 import IconoAstro from './Iconos/ic_Astro.astro'
 import JS from './Iconos/ic_JS.astro'
 import PHP from './Iconos/ic_PHP.astro'
-import type { Proyecto, Images, Data } from '../types'
+
+import type { Proyecto, Images, Data, Componentes } from '../types'
 
 const { data, slug } = Astro.props as Proyecto
-
 const { title, images, tecnologias } = data as Data
 const { image, thumbnail, imageTitle } = images as Images
+
+const componentes = {
+	HTML: HTML,
+	REACT: React,
+	CSS: CSS,
+	ASTRO: IconoAstro,
+	JS: JS,
+	PHP: PHP,
+} as Componentes
 ---
 
 <a href={slug} class="card_article" data-proyecto={title} role="button">
@@ -46,37 +55,11 @@ const { image, thumbnail, imageTitle } = images as Images
 				<ul class="lista-tecnologias">
 					{
 						Object.keys(tecnologias).map((tecnologia) => {
+							const Componente = componentes[tecnologia]
 							return (
-								(tecnologia === 'HTML' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<HTML />
-									</Tecnologias>
-								)) ||
-								(tecnologia === 'REACT' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<React />
-									</Tecnologias>
-								)) ||
-								(tecnologia === 'CSS' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<CSS />
-									</Tecnologias>
-								)) ||
-								(tecnologia === 'ASTRO' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<IconoAstro />
-									</Tecnologias>
-								)) ||
-								(tecnologia === 'JS' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<JS />
-									</Tecnologias>
-								)) ||
-								(tecnologia === 'PHP' && (
-									<Tecnologias tecnologia={tecnologia}>
-										<PHP />
-									</Tecnologias>
-								))
+								<Tecnologias tecnologia={tecnologia}>
+									<Componente /> {/* Renderiza el componente correspondiente */}
+								</Tecnologias>
 							)
 						})
 					}

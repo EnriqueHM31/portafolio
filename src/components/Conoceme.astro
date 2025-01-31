@@ -1,12 +1,6 @@
 ---
 import Etiqueta from './Etiqueta.astro'
-
-const DATOS = [
-	{ title: 'Nacionalidad', texto: 'Mexicano' },
-	{ title: 'Edad', texto: '21 años' },
-	{ title: 'Estado Civil', texto: 'Soltero' },
-	{ title: 'Ocupación', texto: 'Estudiante' },
-] as const
+import { DATOS_CONOCEME } from '../lib/constantes'
 ---
 
 <section class="seccion">
@@ -28,7 +22,7 @@ const DATOS = [
 
 			<div class="contenedor-datos">
 				{
-					DATOS.map((dato) => {
+					DATOS_CONOCEME.map((dato) => {
 						const { title, texto } = dato
 						return <Etiqueta title={title} texto={texto} />
 					})

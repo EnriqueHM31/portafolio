@@ -1,20 +1,24 @@
+---
+import { LINKS_NAVEGACION } from '../lib/constantes'
+---
+
 <nav class="navegacion">
 	<div class="contenido-nav">
 		<strong class="nombre-portafolio">Luis Enrique Hernandez Marin</strong>
 	</div>
 	<ul class="menu">
-		<li class="menu-item">
-			<a class="link-menu" href="#inicio">Inicio</a>
-		</li>
-		<li class="menu-item">
-			<a class="link-menu" href="#proyectos">Proyectos</a>
-		</li>
-		<li class="menu-item">
-			<a class="link-menu" href="#conoceme">Conoceme</a>
-		</li>
-		<li class="menu-item">
-			<a class="link-menu" href="/contact">Contacto</a>
-		</li>
+		{
+			LINKS_NAVEGACION.map((link) => {
+				const { nombre, ruta } = link
+				return (
+					<li class="menu-item">
+						<a class="link-menu" href={ruta}>
+							{nombre}
+						</a>
+					</li>
+				)
+			})
+		}
 	</ul>
 </nav>
 
