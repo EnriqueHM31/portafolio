@@ -1,4 +1,19 @@
-<div class="card">
+---
+import Tecnologias from './Tecnologias.astro'
+import HTML from './Iconos/ic_HTML.astro'
+import CSS from './Iconos/ic_CSS.astro'
+import React from './Iconos/ic_React.astro'
+import IconoAstro from './Iconos/ic_Astro.astro'
+import JS from './Iconos/ic_JS.astro'
+import type { Proyecto, Images, Data } from '../types'
+
+const { data, slug } = Astro.props as Proyecto
+
+const { title, images, tecnologias } = data as Data
+const { image, thumbnail, imageTitle } = images as Images
+---
+
+<div class="card_article">
 	<div class="tools">
 		<div class="circle-card">
 			<span class="red box"></span>
@@ -11,12 +26,59 @@
 		</div>
 	</div>
 	<div class="card-content">
-		<slot />
+		<a href={slug} class="contenedor-imagen-proyecto">
+			<div class="card">
+				<div class="wrapper">
+					<img src={`/Proyectos/${image}`} class="cover-image" alt={title} />
+				</div>
+				<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} />
+				<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} />
+			</div>
+		</a>
+
+		<div class="contenido-proyecto">
+			<h3>{title}</h3>
+			<h4>Tecnologías:</h4>
+
+			<ul class="lista-tecnologias">
+				{
+					Object.keys(tecnologias).map((tecnologia) => {
+						return (
+							(tecnologia === 'HTML' && (
+								<Tecnologias tecnologia={tecnologia}>
+									<HTML />
+								</Tecnologias>
+							)) ||
+							(tecnologia === 'REACT' && (
+								<Tecnologias tecnologia={tecnologia}>
+									<React />
+								</Tecnologias>
+							)) ||
+							(tecnologia === 'CSS' && (
+								<Tecnologias tecnologia={tecnologia}>
+									<CSS />
+								</Tecnologias>
+							)) ||
+							(tecnologia === 'ASTRO' && (
+								<Tecnologias tecnologia={tecnologia}>
+									<IconoAstro />
+								</Tecnologias>
+							)) ||
+							(tecnologia === 'JS' && (
+								<Tecnologias tecnologia={tecnologia}>
+									<JS />
+								</Tecnologias>
+							))
+						)
+					})
+				}
+			</ul>
+		</div>
 	</div>
 </div>
 
 <style>
-	.card {
+	.card_article {
 		width: 90%;
 		margin: 0 auto;
 		background: linear-gradient(0deg, #000 50%, #1f1a1a);
@@ -64,5 +126,158 @@
 		gap: 2rem;
 		padding: 3rem 0;
 		position: relative;
+	}
+
+	/*CARD */
+
+	.contenido-proyecto {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1rem;
+	}
+
+	.contenido-proyecto h3 {
+		font-size: clamp(1.5rem, 5vw, 3.5rem);
+		color: var(--cyan);
+	}
+
+	.contenido-proyecto h4 {
+		font-size: clamp(1rem, 4vw, 2rem);
+		color: var(--blanco);
+		width: 100%;
+		margin: 2rem 0;
+	}
+
+	.contenido-proyecto p {
+		font-size: clamp(1rem, 4vw, 1.7rem);
+		color: var(--blanco);
+	}
+	.lista-tecnologias {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.contenedor-imagen-proyecto {
+		width: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.card {
+		width: 100%;
+		height: auto;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 3rem;
+		perspective: 250rem;
+		margin: 0 5rem;
+	}
+
+	.cover-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.title {
+		width: 100%;
+		transition: transform 0.5s;
+	}
+	.card:hover .title {
+		transform: translate3d(0%, -5rem, 10rem);
+	}
+
+	.wrapper {
+		transition: transform 0.5s;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+		background: var(--cyan);
+		background: linear-gradient(180deg, var(--cyan), rgba(1, 2, 2, 1) 50%);
+		border: 0.1rem solid var(--cyan);
+		overflow: hidden;
+	}
+
+	.card:hover .wrapper {
+		transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(2rem);
+		box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+		-webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+		-moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+	}
+
+	.card:hover .cover-image {
+		opacity: 0.2;
+	}
+
+	.wrapper::before,
+	.wrapper::after {
+		content: '';
+		opacity: 0;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		transition:
+			top 0.5s,
+			height 0.5s,
+			background-image 0.5s;
+	}
+	.wrapper::before {
+		top: 0;
+		height: 100%;
+		background-image: linear-gradient(to top, transparent 46%, rgba(12, 13, 19, 0.5) 68%, rgba(12, 13, 19) 97%);
+	}
+	.wrapper::after {
+		bottom: 0;
+		opacity: 1;
+		background-image: linear-gradient(to bottom, transparent 46%, rgba(12, 13, 19, 0.5) 68%, rgba(12, 13, 19) 97%);
+	}
+
+	.card:hover .wrapper::before,
+	.wrapper::after {
+		opacity: 1;
+	}
+
+	.card:hover .wrapper::after {
+		height: auto;
+	}
+
+	.title {
+		transform: translate3d(0%, 100px, 100px);
+		width: 100%;
+		scale: 1.6;
+		visibility: hidden;
+		transition:
+			transform 0.5s ease-in-out,
+			opacity 0.5s;
+	}
+
+	.card:hover .title {
+		transform: translate3d(0%, 4rem, 10rem);
+		visibility: visible;
+	}
+
+	.character {
+		width: 70%;
+		opacity: 0;
+		transition:
+			transform 0.5s,
+			opacity 0.5s;
+		position: absolute;
+		z-index: -1;
+	}
+
+	.card:hover .character {
+		opacity: 1;
+		transform: translate3d(0%, -10rem, 10rem);
 	}
 </style>
