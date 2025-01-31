@@ -5,6 +5,7 @@ import CSS from './Iconos/ic_CSS.astro'
 import React from './Iconos/ic_React.astro'
 import IconoAstro from './Iconos/ic_Astro.astro'
 import JS from './Iconos/ic_JS.astro'
+import PHP from './Iconos/ic_PHP.astro'
 import type { Proyecto, Images, Data } from '../types'
 
 const { data, slug } = Astro.props as Proyecto
@@ -14,7 +15,7 @@ const { image, thumbnail, imageTitle } = images as Images
 ---
 
 <div class="card_article" data-proyecto={title}>
-	<div class="tools">
+	<figure class="tools">
 		<div class="circle-card">
 			<span class="red box"></span>
 		</div>
@@ -24,8 +25,8 @@ const { image, thumbnail, imageTitle } = images as Images
 		<div class="circle-card">
 			<span class="green box"></span>
 		</div>
-	</div>
-	<div class="card-content">
+	</figure>
+	<article class="card-content">
 		<a href={slug} class="contenedor-imagen-proyecto">
 			<div class="card">
 				<div class="wrapper">
@@ -70,6 +71,11 @@ const { image, thumbnail, imageTitle } = images as Images
 									<Tecnologias tecnologia={tecnologia}>
 										<JS />
 									</Tecnologias>
+								)) ||
+								(tecnologia === 'PHP' && (
+									<Tecnologias tecnologia={tecnologia}>
+										<PHP />
+									</Tecnologias>
 								))
 							)
 						})
@@ -77,13 +83,13 @@ const { image, thumbnail, imageTitle } = images as Images
 				</ul>
 			</div>
 		</div>
-	</div>
+	</article>
 </div>
 
 <style>
 	.card_article {
 		width: 100%;
-		min-height: clamp(20rem, 50vw, 60rem);
+		min-height: clamp(20rem, 55vw, 55rem);
 		background: linear-gradient(0deg, #000 50%, #1f1a1a);
 		box-shadow: 0 0.4rem 0.3rem 0.1rem var(--cyan);
 		border-radius: 1rem;
@@ -152,12 +158,11 @@ const { image, thumbnail, imageTitle } = images as Images
 	}
 
 	.card-content {
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		position: relative;
+		justify-content: space-between;
+		min-height: 90%;
 	}
 
 	/*CARD */
@@ -166,19 +171,21 @@ const { image, thumbnail, imageTitle } = images as Images
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		justify-content: center;
-		min-height: clamp(20rem, 50vw, 25rem);
-		padding: 0 2rem;
+		justify-content: space-between;
+		padding: 2rem;
+		flex: 1;
+		width: 100%;
 	}
 
 	.contenido-proyecto h3 {
-		font-size: clamp(1.5rem, 5vw, 3rem);
+		font-size: clamp(1.5rem, 5vw, 2.7rem);
 		color: var(--cyan);
 		transition: color 0.5s;
 		text-align: center;
-		min-height: clamp(5rem, 10vw, 12rem);
+		min-height: clamp(5rem, 10vw, 8rem);
 		display: flex;
 		place-items: center;
+		width: 100%;
 	}
 
 	.contenido-proyecto h4 {
@@ -187,6 +194,7 @@ const { image, thumbnail, imageTitle } = images as Images
 		width: 100%;
 		margin: 1rem 0;
 		text-align: center;
+		padding: 3rem;
 	}
 
 	.contenido-proyecto p {
@@ -201,16 +209,21 @@ const { image, thumbnail, imageTitle } = images as Images
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
-		flex: auto;
+		flex: 1;
 	}
 
 	.lista-tecnologias {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-		grid-auto-rows: minmax(3rem, auto);
+		grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+		gap: 1.5rem;
+		justify-items: center;
 		align-items: center;
-		gap: 1.5rem 2.5rem;
+		justify-content: center;
+		place-items: center;
+		place-content: center;
+		text-align: center;
+		align-content: center;
 	}
 
 	.contenedor-imagen-proyecto {
