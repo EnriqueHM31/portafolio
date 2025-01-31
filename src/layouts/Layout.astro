@@ -1,5 +1,9 @@
 ---
-const { title, icono } = Astro.props
+interface Props {
+	title: string
+	descripcion: string
+}
+const { title, descripcion } = Astro.props
 ---
 
 <!doctype html>
@@ -11,6 +15,7 @@ const { title, icono } = Astro.props
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="stylesheet" href="/src/assets/fondo.css" />
+		<meta name="description" content={descripcion} />
 		<script src="/src/lib/Fondo.js" defer is:inline></script>
 	</head>
 	<body>
@@ -37,6 +42,11 @@ const { title, icono } = Astro.props
 		font-size: 10px;
 		background-color: var(--negro);
 		scroll-behavior: smooth;
+	}
+
+	body {
+		overflow-x: hidden;
+		min-height: 100dvh;
 	}
 
 	@font-face {
@@ -83,7 +93,7 @@ const { title, icono } = Astro.props
 	}
 
 	.typing h3 {
-		font-size: clamp(2rem, 5vw, 4rem);
+		font-size: clamp(2rem, 5vw, 7rem);
 		color: var(--blanco);
 		text-shadow: 0 0 1rem var(--cyan);
 		overflow: hidden;
