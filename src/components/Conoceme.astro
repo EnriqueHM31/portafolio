@@ -1,0 +1,92 @@
+---
+import Etiqueta from './Etiqueta.astro'
+
+const DATOS = [
+	{ title: 'Nacionalidad', texto: 'Mexicano' },
+	{ title: 'Edad', texto: '21 años' },
+	{ title: 'Estado Civil', texto: 'Soltero' },
+	{ title: 'Ocupación', texto: 'Estudiante' },
+] as const
+---
+
+<section class="seccion">
+	<header>
+		<div class="typing">
+			<h2>Conoceme</h2>
+		</div>
+	</header>
+	<main id="conoceme">
+		<figure class="contenedor-imagen">
+			<img src="/Avatar.webp" alt="El avatar de Luis Enrique Hernandez Marin" loading="lazy" />
+			<div class="overlay"></div>
+		</figure>
+
+		<div class="contenido-conoceme">
+			<h3>Luis Enrique Hernandez Marin</h3>
+			<p>Desde niño me gusto mucho la tecnologia, y cuando conoci el mundo del desarrollo Web estudie de forma autodictacta asi ahora me especializo en el Frontend</p>
+			<p>Trato de resolver problemas de manera creativa, me gusta trabajar en equipo y con la comunidad de desarrollo web</p>
+
+			<div class="contenedor-datos">
+				{
+					DATOS.map((dato) => {
+						const { title, texto } = dato
+						return <Etiqueta title={title} texto={texto} />
+					})
+				}
+			</div>
+		</div>
+	</main>
+</section>
+
+<style>
+	main {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8rem;
+	}
+	figure {
+		width: clamp(10rem, 40vw, 40rem);
+		height: clamp(10rem, 40vw, 40rem);
+		display: grid;
+		place-items: center;
+		overflow: hidden;
+		border-radius: 50%;
+		background: radial-gradient(ellipse at top, #000, transparent), radial-gradient(ellipse at bottom, var(--cyan), #000);
+		box-shadow: 0 0 1rem var(--cyan);
+		position: relative;
+	}
+
+	img {
+		width: clamp(10rem, 40vw, 40rem);
+		height: clamp(10rem, 40vw, 40rem);
+		mask-image: linear-gradient(black 80%, transparent 100%);
+	}
+
+	.contenido-conoceme {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.contenido-conoceme h3 {
+		font-size: clamp(1.5rem, 5vw, 3.9rem);
+		color: var(--cyan);
+		text-shadow: 0 0 1rem var(--negro);
+	}
+
+	.contenido-conoceme p {
+		font-size: clamp(1.5rem, 5vw, 1.8rem);
+		color: var(--blanco);
+		margin: 2rem 0;
+	}
+
+	/*Card*/
+	.contenedor-datos {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+</style>
