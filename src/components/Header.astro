@@ -14,9 +14,9 @@ import { Image } from '@astrojs/image/components'
 		</div>
 	</div>
 
-	<div class="image-header">
-		<Image src="/header.webp" alt="portada" width={400} height={400} loading="eager" />
-	</div>
+	<figure class="image-header">
+		<Image src="/header.webp" alt="portada" width={500} height={500} loading="lazy" />
+	</figure>
 </section>
 
 <style>
@@ -69,7 +69,6 @@ import { Image } from '@astrojs/image/components'
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		overflow: hidden;
 	}
 
 	.image-header img {
