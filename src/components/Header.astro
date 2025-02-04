@@ -1,7 +1,6 @@
 ---
 import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
 import IconoEmail from '../components/Iconos/iconoEmail.astro'
-import { Image } from '@astrojs/image/components'
 import { INFORMACION_HEADER } from '../lib/constantes'
 
 const { title, descripcion } = INFORMACION_HEADER
@@ -18,7 +17,7 @@ const { title, descripcion } = INFORMACION_HEADER
 	</div>
 
 	<figure class="image-header">
-		<Image src="/header.webp" alt="portada" width={500} height={500} loading="lazy" />
+		<img src="/header.webp" alt="portada" width={500} height={500} loading="lazy" />
 	</figure>
 </section>
 
