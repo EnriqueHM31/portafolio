@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro'
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+export const getStaticPaths = (async () => {
+	const trabajos = await getCollection('proyectos')
+	return trabajos.map((trabajo) => {
+		return {
+			params: { id: trabajo.slug },
+		}
+	})
+}) satisfies GetStaticPaths
+---
+
+<Layout title={Astro.params.id} descripcion={`Pagina de mi proyecto ${Astro.params.id}`} />
