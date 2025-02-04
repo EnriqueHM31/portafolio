@@ -9,10 +9,8 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.18.0",
 		"@astrojs/ts-plugin": "^1.10.4",
-		"astro": "^5.2.1",
-		"three": "^0.172.0"
+		"astro": "^5.2.1"
 	},
 	"devDependencies": {
 		"prettier": "^3.4.2"
