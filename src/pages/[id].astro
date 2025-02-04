@@ -1,16 +1,64 @@
 ---
-import type { GetStaticPaths } from 'astro'
 import Layout from '../layouts/Layout.astro'
-import { getCollection } from 'astro:content'
+import { getCollection, render } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
 
 export const getStaticPaths = (async () => {
 	const trabajos = await getCollection('proyectos')
 	return trabajos.map((trabajo) => {
 		return {
 			params: { id: trabajo.slug },
+			props: { trabajo },
 		}
 	})
 }) satisfies GetStaticPaths
+
+const { trabajo } = Astro.props
+const { data, slug } = trabajo
+const { title, images, tecnologias } = data
+const { image, thumbnail, imageTitle } = images
+const { Content } = await render(trabajo)
 ---
 
-<Layout title={Astro.params.id} descripcion={`Pagina de mi proyecto ${Astro.params.id}`} />
+<Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
+	<section>
+		<header>
+			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} alt={`Imagen del proyecto ${title}`} />
+		</header>
+
+		<main>
+			<h2>{title}</h2>
+			<Content />
+		</main>
+	</section>
+</Layout>
+
+<style>
+	section {
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+	}
+
+	header {
+		width: 100%;
+		display: grid;
+		place-items: center;
+	}
+
+	img {
+		width: clamp(30rem, 55vw, 60rem);
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+	}
+
+	main h2 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		color: var(--cyan);
+	}
+</style>
