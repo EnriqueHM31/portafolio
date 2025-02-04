@@ -6,7 +6,6 @@ import React from './Iconos/ic_React.astro'
 import IconoAstro from './Iconos/ic_Astro.astro'
 import JS from './Iconos/ic_JS.astro'
 import PHP from './Iconos/ic_PHP.astro'
-
 import type { Proyecto, Images, Data, Componentes } from '../types'
 
 const { data, slug } = Astro.props as Proyecto
@@ -39,7 +38,7 @@ const componentes = {
 		<header class="contenedor-imagen-proyecto">
 			<div class="card">
 				<div class="wrapper">
-					<img src={`/Proyectos/${image}`} class="cover-image" alt={title} loading="lazy" />
+					<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} class="cover-image" alt={title} loading="lazy" />
 				</div>
 				<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} loading="lazy" />
 				<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} loading="lazy" />
