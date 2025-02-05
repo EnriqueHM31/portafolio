@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
+import '../assets/Proyecto.css'
+import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
 
 export const getStaticPaths = (async () => {
 	const trabajos = await getCollection('proyectos')
@@ -15,20 +17,23 @@ export const getStaticPaths = (async () => {
 
 const { trabajo } = Astro.props
 const { data, slug } = trabajo
-const { title, images, tecnologias } = data
+const { title, images, tecnologias, color } = data
 const { image, thumbnail, imageTitle } = images
 const { Content } = await render(trabajo)
 ---
 
 <Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
 	<section>
-		<header>
+		<header class="contenedor-imagen-proyecto" style={`background: radial-gradient(circle at top, ${color} 0%, rgba(0, 0, 0, 0) 52%);`}>
 			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} alt={`Imagen del proyecto ${title}`} />
 		</header>
 
 		<main>
-			<h2>{title}</h2>
-			<Content />
+			<header class="contenido-header">
+				<h2>{title}</h2>
+				<IconoGitHub />
+			</header>
+			<Content style="color: var(--blanco)" />
 		</main>
 	</section>
 </Layout>
@@ -42,10 +47,11 @@ const { Content } = await render(trabajo)
 		gap: 3rem;
 	}
 
-	header {
+	.contenedor-imagen-proyecto {
 		width: 100%;
-		display: grid;
-		place-items: center;
+		display: flex;
+		justify-content: center;
+		padding: 4rem 0;
 	}
 
 	img {
@@ -55,6 +61,18 @@ const { Content } = await render(trabajo)
 	main {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		gap: 1.3rem;
+		margin-bottom: 5rem;
+	}
+
+	.contenido-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		width: 100%;
+		margin-bottom: 2rem;
 	}
 
 	main h2 {
