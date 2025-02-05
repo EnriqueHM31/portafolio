@@ -38,10 +38,10 @@ const componentes = {
 		<header class="contenedor-imagen-proyecto">
 			<div class="card">
 				<div class="wrapper">
-					<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} class="cover-image" alt={title} loading="lazy" />
+					<img transition:name={`image-${slug}}`} src={`/Proyectos/${image}`} class="cover-image" alt={title} />
 				</div>
-				<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} loading="lazy" />
-				<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} loading="lazy" />
+				<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} />
+				<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} />
 			</div>
 		</header>
 
@@ -57,7 +57,7 @@ const componentes = {
 							const Componente = componentes[tecnologia]
 							return (
 								<Tecnologias tecnologia={tecnologia}>
-									<Componente /> {/* Renderiza el componente correspondiente */}
+									<Componente />
 								</Tecnologias>
 							)
 						})
