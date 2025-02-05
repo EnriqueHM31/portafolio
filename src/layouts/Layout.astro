@@ -17,7 +17,6 @@ const { title, descripcion } = Astro.props
 		<title>{title}</title>
 		<link rel="stylesheet" href="/src/assets/fondo.css" />
 		<meta name="description" content={descripcion} />
-		<script src="/src/lib/Fondo.js" defer is:raw></script>
 		<ClientRouter />
 	</head>
 	<body>
@@ -43,7 +42,6 @@ const { title, descripcion } = Astro.props
 	html {
 		font-size: 10px;
 		background-color: var(--negro);
-		scroll-behavior: smooth;
 	}
 
 	body {
