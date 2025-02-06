@@ -1,9 +1,17 @@
 ---
+import Tecnologias from '../components/Tecnologias.astro'
+import HTML from '../components/Iconos/ic_HTML.astro'
+import CSS from '../components/Iconos/ic_CSS.astro'
+import React from '../components/Iconos/ic_React.astro'
+import IconoAstro from '../components/Iconos/ic_Astro.astro'
+import JS from '../components/Iconos/ic_JS.astro'
+import PHP from '../components/Iconos/ic_PHP.astro'
 import Layout from '../layouts/Layout.astro'
 import { getCollection, render } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 import '../assets/Proyecto.css'
 import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
+import type { Componentes } from '../types'
 
 export const getStaticPaths = (async () => {
 	const trabajos = await getCollection('proyectos')
@@ -20,6 +28,15 @@ const { data, slug } = trabajo
 const { title, images, tecnologias, color, repositorio } = data
 const { image } = images
 const { Content } = await render(trabajo)
+
+const componentes = {
+	HTML: HTML,
+	REACT: React,
+	CSS: CSS,
+	ASTRO: IconoAstro,
+	JS: JS,
+	PHP: PHP,
+} as Componentes
 ---
 
 <Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
@@ -33,12 +50,33 @@ const { Content } = await render(trabajo)
 				<h2>{title}</h2>
 				<IconoGitHub enlace={repositorio} titulo={title} descripcion="Visitar el repo del proyecto" color={color} />
 			</header>
+
+			<ul class="lista-tecnologias">
+				{
+					Object.keys(tecnologias).map((tecnologia) => {
+						const Componente = componentes[tecnologia]
+						return (
+							<Tecnologias tecnologia={tecnologia}>
+								<Componente />
+							</Tecnologias>
+						)
+					})
+				}
+			</ul>
+
 			<Content style="color: var(--blanco)" />
 		</main>
 	</section>
 </Layout>
 
 <style>
+	.lista-tecnologias {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+	}
+
 	section {
 		min-height: 100dvh;
 		display: flex;
