@@ -1,0 +1,72 @@
+---
+import Formulario from './Formulario.astro'
+---
+
+<section class="seccion-contacto" id="contacto">
+	<div class="contenido-contacto">
+		<header>
+			<div class="typing">
+				<h2>Contacto</h2>
+			</div>
+		</header>
+		<main>
+			<h2>Gracias por visitar mi Portafolio</h2>
+			<img src="/Contacto.webp" alt="contacto" width={500} height={500} loading="lazy" />
+		</main>
+	</div>
+	<Formulario />
+
+	<hr />
+</section>
+
+<h2 class="pie">Futuro Ingeniero en Sistemas Computacionales</h2>
+
+<style>
+	.seccion-contacto {
+		max-width: 90%;
+		min-height: 100dvh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		margin-bottom: 2.5rem;
+		border-bottom: 0.1rem solid var(--cyan);
+	}
+
+	header {
+		width: fit-content;
+	}
+
+	.contenido-contacto {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	main h2 {
+		font-size: clamp(1.5rem, 5vw, 2.5rem);
+		color: var(--cyan);
+	}
+
+	img {
+		width: 90%;
+		height: clamp(20rem, 30vw, 40rem);
+		object-fit: cover;
+		filter: drop-shadow(0 0 1rem var(--cyan));
+	}
+
+	.pie {
+		font-size: clamp(1.5rem, 5vw, 2.5rem);
+		color: var(--blanco);
+		width: 100%;
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+</style>
