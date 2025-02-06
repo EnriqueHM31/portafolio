@@ -24,14 +24,14 @@ const { Content } = await render(trabajo)
 
 <Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
 	<section>
-		<header class="contenedor-imagen-proyecto" style={`background: radial-gradient(circle at top, ${color} 0%, rgba(0, 0, 0, 0) 52%);`}>
+		<header class="contenedor-imagen-proyecto" style={`background: radial-gradient(circle at top, ${color} 0%, rgba(0, 0, 0, 0) 47%);`}>
 			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} alt={`Imagen del proyecto ${title}`} />
 		</header>
 
-		<main>
+		<main class="contenido-proyecto" data-color={color}>
 			<header class="contenido-header">
 				<h2>{title}</h2>
-				<IconoGitHub enlace={repositorio} titulo={title} descripcion="Visitar el repo del proyecto" />
+				<IconoGitHub enlace={repositorio} titulo={title} descripcion="Visitar el repo del proyecto" color={color} />
 			</header>
 			<Content style="color: var(--blanco)" />
 		</main>
@@ -51,7 +51,7 @@ const { Content } = await render(trabajo)
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		padding: 4rem 0;
+		padding-bottom: 5rem;
 	}
 
 	img {
@@ -77,6 +77,24 @@ const { Content } = await render(trabajo)
 
 	main h2 {
 		font-size: clamp(2rem, 5vw, 3rem);
-		color: var(--cyan);
+		padding: 1rem 2rem;
+		border-radius: 1rem;
+	}
+
+	.contenido-proyecto[data-color='yellow'] h2 {
+		color: black;
+		background-color: yellow;
+	}
+	.contenido-proyecto[data-color='red'] h2 {
+		color: white;
+		background-color: red;
+	}
+	.contenido-proyecto[data-color='#567fff'] h2 {
+		color: white;
+		background-color: #567fff;
+	}
+	.contenido-proyecto[data-color='#56051f'] h2 {
+		color: white;
+		background-color: #56051f;
 	}
 </style>
