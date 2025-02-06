@@ -4,42 +4,42 @@ import type { Tecnologia } from '../types'
 const { tecnologia } = Astro.props as Tecnologia
 ---
 
-<li class="btn" data-tecnologia={tecnologia}>
+<li class="item-lista" data-tecnologia={tecnologia}>
 	<strong>
 		<slot />
 		{tecnologia}
 	</strong>
-	<div id="container-stars">
-		<div id="stars"></div>
+	<div id="contenido-estrellas">
+		<div id="estrellas"></div>
 	</div>
 
-	<div id="glow">
-		<div class="circle"></div>
-		<div class="circle"></div>
+	<div id="efecto">
+		<div class="circulo"></div>
+		<div class="circulo"></div>
 	</div>
 </li>
 
 <style>
-	.btn[data-tecnologia='HTML'] {
+	.item-lista[data-tecnologia='HTML'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 45%, #000000 67%, #161a25 87%);
 	}
-	.btn[data-tecnologia='CSS'] {
+	.item-lista[data-tecnologia='CSS'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 45%, #000000 67%, #161a25 87%);
 	}
-	.btn[data-tecnologia='REACT'] {
+	.item-lista[data-tecnologia='REACT'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 45%, #000000 67%, #161a25 87%);
 	}
-	.btn[data-tecnologia='ASTRO'] {
+	.item-lista[data-tecnologia='ASTRO'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #ff5d01 10%, #ff5d01 45%, #000000 67%, #161a25 87%);
 	}
-	.btn[data-tecnologia='JS'] {
+	.item-lista[data-tecnologia='JS'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #f0db4f 10%, #f0db4f 45%, #000000 67%, #161a25 87%);
 	}
-	.btn[data-tecnologia='PHP'] {
+	.item-lista[data-tecnologia='PHP'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #484c89 10%, #484c89 45%, #000000 67%, #161a25 87%);
 	}
 
-	.btn {
+	.item-lista {
 		width: clamp(8rem, 9vw, 12rem);
 		height: clamp(3rem, 4vw, 4rem);
 		display: flex;
@@ -57,7 +57,7 @@ const { tecnologia } = Astro.props as Tecnologia
 		flex: 1 0 10rem;
 	}
 
-	#container-stars {
+	#contenido-estrellas {
 		position: absolute;
 		z-index: -1;
 		width: 100%;
@@ -80,20 +80,13 @@ const { tecnologia } = Astro.props as Tecnologia
 		gap: 1rem;
 	}
 
-	#glow {
+	#efecto {
 		position: absolute;
 		display: flex;
 		width: clamp(12rem, 5vw, 15rem);
 	}
 
-	.circle-container {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		animation: orbit 5s linear infinite;
-	}
-
-	.circle {
+	.circulo {
 		position: absolute;
 		width: clamp(2rem, 5vw, 3rem);
 		height: clamp(2rem, 5vw, 3rem);
@@ -101,77 +94,77 @@ const { tecnologia } = Astro.props as Tecnologia
 		filter: blur(2rem);
 	}
 
-	.btn[data-tecnologia='HTML'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='HTML'] .circle:nth-of-type(1) {
 		background: #e34f26;
 	}
-	.btn[data-tecnologia='CSS'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='CSS'] .circle:nth-of-type(1) {
 		background: #264de4;
 	}
-	.btn[data-tecnologia='REACT'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='REACT'] .circle:nth-of-type(1) {
 		background: #58c4dc;
 	}
-	.btn[data-tecnologia='ASTRO'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='ASTRO'] .circle:nth-of-type(1) {
 		background: #ff5d01;
 	}
-	.btn[data-tecnologia='JS'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='JS'] .circle:nth-of-type(1) {
 		background: #f0db4f;
 	}
-	.btn[data-tecnologia='PHP'] .circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='PHP'] .circle:nth-of-type(1) {
 		background: #484c89;
 	}
 
-	.circle:nth-of-type(1) {
+	.item-lista[data-tecnologia='HTML'] .circle:nth-of-type(2) {
+		background: #e34f26;
+	}
+	.item-lista[data-tecnologia='CSS'] .circle:nth-of-type(2) {
+		background: #264de4;
+	}
+	.item-lista[data-tecnologia='REACT'] .circle:nth-of-type(2) {
+		background: #58c4dc;
+	}
+	.item-lista[data-tecnologia='ASTRO'] .circle:nth-of-type(2) {
+		background: #ff5d01;
+	}
+	.item-lista[data-tecnologia='JS'] .circle:nth-of-type(2) {
+		background: #f0db4f;
+	}
+	.item-lista[data-tecnologia='PHP'] .circle:nth-of-type(2) {
+		background: #484c89;
+	}
+
+	.circulo:nth-of-type(1) {
 		animation: orbit 8s linear infinite;
 	}
 
-	.btn[data-tecnologia='HTML'] .circle:nth-of-type(2) {
-		background: #e34f26;
-	}
-	.btn[data-tecnologia='CSS'] .circle:nth-of-type(2) {
-		background: #264de4;
-	}
-	.btn[data-tecnologia='REACT'] .circle:nth-of-type(2) {
-		background: #58c4dc;
-	}
-	.btn[data-tecnologia='ASTRO'] .circle:nth-of-type(2) {
-		background: #ff5d01;
-	}
-	.btn[data-tecnologia='JS'] .circle:nth-of-type(2) {
-		background: #f0db4f;
-	}
-	.btn[data-tecnologia='PHP'] .circle:nth-of-type(2) {
-		background: #484c89;
-	}
-
-	.circle:nth-of-type(2) {
+	.circulo:nth-of-type(2) {
 		animation: orbit 10s linear infinite;
 	}
 
-	.btn:hover #container-stars {
+	.item-lista:hover #contenido-estrellas {
 		z-index: 1;
 		background-color: #161a25;
 	}
 
-	.btn:hover {
+	.item-lista:hover {
 		transform: scale(1.1);
 	}
 
-	.btn:active[data-tecnologia='HTML'] {
+	.item-lista:active[data-tecnologia='HTML'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #e34f26 10%, #e34f26 60%, #000000 67%, #161a25 87%);
 	}
-	.btn:active[data-tecnologia='CSS'] {
+	.item-lista:active[data-tecnologia='CSS'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #264de4 10%, #264de4 60%, #000000 67%, #161a25 87%);
 	}
-	.btn:active[data-tecnologia='REACT'] {
+	.item-lista:active[data-tecnologia='REACT'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #58c4dc 10%, #58c4dc 60%, #000000 67%, #161a25 87%);
 	}
-	.btn:active[data-tecnologia='ASTRO'] {
+	.item-lista:active[data-tecnologia='ASTRO'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #ff5d01 10%, #ff5d01 60%, #000000 67%, #161a25 87%);
 	}
-	.btn:active[data-tecnologia='JS'] {
+	.item-lista:active[data-tecnologia='JS'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #f0db4f 10%, #f0db4f 60%, #000000 67%, #161a25 87%);
 	}
-	.btn:active[data-tecnologia='PHP'] {
+	.item-lista:active[data-tecnologia='PHP'] {
 		background-image: linear-gradient(#161a25, #161a25), linear-gradient(137.48deg, #484c89 10%, #484c89 60%, #000000 67%, #161a25 87%);
 	}
 
@@ -184,14 +177,14 @@ const { tecnologia } = Astro.props as Tecnologia
 		}
 	}
 
-	#stars {
+	#estrellas {
 		position: relative;
 		background: transparent;
 		width: 200rem;
 		height: 200rem;
 	}
 
-	#stars::after {
+	#estrellas::after {
 		content: '';
 		position: absolute;
 		top: -10rem;
@@ -201,12 +194,12 @@ const { tecnologia } = Astro.props as Tecnologia
 		animation: animStarRotate 90s linear infinite;
 	}
 
-	#stars::after {
+	#estrellas::after {
 		background-image: radial-gradient(#ffffff 1px, transparent 1%);
 		background-size: 6rem 6rem;
 	}
 
-	#stars::before {
+	#estrellas::before {
 		content: '';
 		position: absolute;
 		top: 0;
@@ -216,7 +209,7 @@ const { tecnologia } = Astro.props as Tecnologia
 		animation: animStar 60s linear infinite;
 	}
 
-	#stars::before {
+	#estrellas::before {
 		background-image: radial-gradient(#ffffff 1px, transparent 1%);
 		background-size: 50px 50px;
 		opacity: 0.5;
