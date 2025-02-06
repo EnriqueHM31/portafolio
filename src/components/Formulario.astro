@@ -1,0 +1,147 @@
+<div class="contenedor">
+	<div class="contenedor2">
+		<form class="formulario">
+			<p id="titulo">Contactame</p>
+			<label class="datos">
+				<svg class="input-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"
+					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+						<path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#ffffff"></path>
+						<path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#ffffff"></path>
+					</g></svg
+				>
+				<input type="text" class="input-datos" placeholder="Remitente" autocomplete="off" />
+			</label>
+			<label class="datos">
+				<svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"
+					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+						<path
+							d="M9 7H5C3.89543 7 3 7.89543 3 9V18C3 19.1046 3.89543 20 5 20H19C20.1046 20 21 19.1046 21 18V9C21 7.89543 20.1046 7 19 7H15M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7M9 7H15"
+							stroke="#ffffff"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+					</g></svg
+				>
+				<input type="text" class="input-datos" placeholder="Asunto" autocomplete="off" />
+			</label>
+			<label class="datos">
+				<svg class="input-icon" fill="#ffffff" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"
+					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+						<path
+							d="M0 1694.235h1920V226H0v1468.235ZM112.941 376.664V338.94H1807.06v37.723L960 1111.233l-847.059-734.57ZM1807.06 526.198v950.513l-351.134-438.89-88.32 70.475 378.353 472.998H174.042l378.353-472.998-88.32-70.475-351.134 438.89V526.198L960 1260.768l847.059-734.57Z"
+							fill-rule="evenodd"></path>
+					</g></svg
+				>
+				<textarea class="input-datos area" placeholder="Mensaje"></textarea>
+			</label>
+
+			<button type="submit" class="button3">Enviar Mensaje</button>
+		</form>
+	</div>
+</div>
+
+<style>
+	.formulario {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 10px;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		padding-bottom: 0.4rem;
+		background-color: #171717;
+		border-radius: 2.8rem;
+		height: 100%;
+	}
+
+	.contenedor {
+		width: min(40%, 100%);
+		height: 70dvh;
+		background-image: linear-gradient(163deg, var(--cyan) 0%, #00ff75 100%);
+		border-radius: 22px;
+		transition: box-shadow 0.3s;
+	}
+
+	.contenedor2 {
+		width: 100%;
+		height: 70dvh;
+		border-radius: 0;
+		transition:
+			transform 0.2s,
+			border-radius 0.3s;
+	}
+
+	.contenedor2:hover {
+		transform: scale(0.98);
+		border-radius: 2rem;
+	}
+
+	.contenedor:hover {
+		box-shadow: 0 0 1.5rem var(--cyan);
+	}
+
+	#titulo {
+		text-align: center;
+		margin: 2rem;
+		color: rgb(255, 255, 255);
+		font-size: clamp(1.5rem, 5vw, 3.5rem);
+	}
+
+	.datos {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		border-radius: 2.2rem;
+		padding: 1rem 1.5rem;
+		border: none;
+		outline: none;
+		color: white;
+		background-color: #171717;
+		box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+		width: 90%;
+	}
+
+	.area {
+		resize: none;
+		datos-sizing: content;
+		max-height: clamp(10rem, 15vw, 11rem);
+		overflow: hidden;
+	}
+
+	.input-icon {
+		height: clamp(1rem, 2vw, 1.3rem);
+		width: clamp(1rem, 2vw, 1.3rem);
+		fill: white;
+	}
+
+	.input-datos {
+		background: none;
+		border: none;
+		outline: none;
+		width: 100%;
+		color: var(--blanco);
+		padding: 1rem 1.5rem;
+	}
+
+	.button3 {
+		font-size: clamp(1.2rem, 5vw, 2rem);
+		padding: 1rem 2rem;
+		border-radius: 1rem;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		transition:
+			background-color 0.3s,
+			color 0.3s;
+		background-color: #252525;
+		color: var(--blanco);
+		margin-top: 2rem;
+	}
+
+	.button3:hover {
+		background-color: var(--cyan);
+		color: var(--negro);
+	}
+</style>
