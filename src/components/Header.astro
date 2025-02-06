@@ -11,8 +11,8 @@ const { title, descripcion } = INFORMACION_HEADER
 		<h1 class="titulo">{title}</h1>
 		<p class="descripcion-header">{descripcion}</p>
 		<div class="contenedor-iconos-contacto">
-			<a href="https://github.com/EnriqueHM31" target="_blank">{(<IconoGitHub />)}</a>
-			<a href="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo">{(<IconoEmail />)} </a>
+			<IconoGitHub enlace="https://github.com/EnriqueHM31" titulo="EnriqueHM31" descripcion="Visitar mi Git Hub" />
+			<IconoEmail enlace="mailto:luisenriquehernandezmarin0@gmail.com?subject=Trabajo" />
 		</div>
 	</div>
 
@@ -58,10 +58,6 @@ const { title, descripcion } = INFORMACION_HEADER
 		width: 100%;
 		gap: 2rem;
 		margin-top: 3rem;
-	}
-
-	.contenedor-iconos-contacto a {
-		height: auto;
 	}
 
 	.image-header {
