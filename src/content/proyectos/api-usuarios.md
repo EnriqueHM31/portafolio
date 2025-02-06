@@ -3,6 +3,7 @@ title: 'Manejo de API Usuarios'
 tecnologias: { HTML: 'HTML', REACT: 'REACT', CSS: 'CSS', JS: 'JS' }
 images: { image: 'api-usuarios.webp', thumbnail: 'api-usuarios-hover.webp', imageTitle: 'api-usuarios-title.webp' }
 color: 'yellow'
+repositorio: 'https://github.com/EnriqueHM31/practica-api-users'
 ---
 
 Este proyecto utiliza la API Random User Generator para generar datos de usuario aleatorios, ideal para prototipos, pruebas de aplicaciones y demostraciones. Con esta API, puedes obtener información como nombres, direcciones, correos electrónicos, fotos de perfil y más, todo de manera sencilla y rápida.
