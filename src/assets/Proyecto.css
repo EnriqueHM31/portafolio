@@ -6,7 +6,7 @@
 
 
 p {
-    width: clamp(20rem, 80vw, 100rem);
+    width: clamp(20rem, 80vw, 100%);
     font-family: 'monse', sans-serif;
     color: var(--blanco);
     font-size: clamp(1rem, 4vw, 2rem);
@@ -14,15 +14,10 @@ p {
     margin-bottom: 1rem;
 }
 
-p:nth-child(4) {
-    font-size: clamp(1.5rem, 5vw, 2.7rem);
-    font-weight: bold;
-    color: var(--cyan);
-    text-align: center;
-}
+
 
 ul {
-    width: 1005px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.4rem;
@@ -33,6 +28,31 @@ li {
     font-family: 'monse', sans-serif;
     font-size: clamp(1rem, 4vw, 2rem);
     color: var(--blanco);
+}
+
+.iconos-tecnologias {
+    scale: 1.8;
+    transition: translate 0.5s, scale 0.5s, filter 0.5s;
+}
+
+.article-tecnologia:hover .iconos-tecnologias {
+    scale: 2.2;
+    translate: 0 -2rem 0;
+}
 
 
+.contenido-proyecto[data-color='yellow'] .article-tecnologia:hover .iconos-tecnologias {
+    filter: drop-shadow(0 2rem 1.2rem yellow);
+}
+
+.contenido-proyecto[data-color='red'] .article-tecnologia:hover .iconos-tecnologias {
+    filter: drop-shadow(0 2rem 1.2rem red);
+}
+
+.contenido-proyecto[data-color='#567fff'] .article-tecnologia:hover .iconos-tecnologias {
+    filter: drop-shadow(0 2rem 1.2rem #567fff);
+}
+
+.contenido-proyecto[data-color='#56051f'] .article-tecnologia:hover .iconos-tecnologias {
+    filter: drop-shadow(0 2rem 1.2rem #56051f);
 }
