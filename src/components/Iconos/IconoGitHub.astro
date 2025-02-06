@@ -1,8 +1,8 @@
 ---
-const { enlace, titulo, descripcion } = Astro.props
+const { enlace, titulo, color, descripcion } = Astro.props
 ---
 
-<a href={enlace} target="_blank" rel="noreferrer">
+<a class="link_git" href={enlace} target="_blank" rel="noreferrer" data-color={color}>
 	<div class="button-icon">
 		<figure class="icon">
 			<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 2048 2048">
@@ -14,7 +14,7 @@ const { enlace, titulo, descripcion } = Astro.props
 		</figure>
 		<main class="cube">
 			<span class="side front">{titulo}</span>
-			<span class="side top">{descripcion}</span>
+			<span class="side top" style={{ background: color }}> {descripcion}</span>
 		</main>
 	</div>
 </a>
@@ -51,6 +51,22 @@ const { enlace, titulo, descripcion } = Astro.props
 		border-color: var(--cyan);
 	}
 
+	.link_git[data-color='yellow'] .button-icon:hover {
+		border-color: yellow;
+	}
+
+	.link_git[data-color='red'] .button-icon:hover {
+		border-color: red;
+	}
+
+	.link_git[data-color='#56051f'] .button-icon:hover {
+		border-color: #56051f;
+	}
+
+	.link_git[data-color='#567fff'] .button-icon:hover {
+		border-color: #567fff;
+	}
+
 	.button-icon:hover .cube {
 		transform: rotateX(90deg);
 	}
@@ -70,6 +86,22 @@ const { enlace, titulo, descripcion } = Astro.props
 		background: var(--cyan);
 		color: var(--negro);
 		transform: rotateX(-90deg) translate3d(0, 0rem, 2rem);
+	}
+
+	.link_git[data-color='yellow'] .top {
+		color: black;
+	}
+
+	.link_git[data-color='red'] .top {
+		color: white;
+	}
+
+	.link_git[data-color='#56051f'] .top {
+		color: white;
+	}
+
+	.link_git[data-color='#567fff'] .top {
+		color: white;
 	}
 
 	.front {
