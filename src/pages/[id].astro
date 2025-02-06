@@ -17,8 +17,8 @@ export const getStaticPaths = (async () => {
 
 const { trabajo } = Astro.props
 const { data, slug } = trabajo
-const { title, images, tecnologias, color } = data
-const { image, thumbnail, imageTitle } = images
+const { title, images, tecnologias, color, repositorio } = data
+const { image } = images
 const { Content } = await render(trabajo)
 ---
 
@@ -31,7 +31,7 @@ const { Content } = await render(trabajo)
 		<main>
 			<header class="contenido-header">
 				<h2>{title}</h2>
-				<IconoGitHub />
+				<IconoGitHub enlace={repositorio} titulo={title} descripcion="Visitar el repo del proyecto" />
 			</header>
 			<Content style="color: var(--blanco)" />
 		</main>
