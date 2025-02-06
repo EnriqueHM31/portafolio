@@ -49,32 +49,70 @@ const componentes = {
 			<header class="contenido-header">
 				<h2>{title}</h2>
 				<IconoGitHub enlace={repositorio} titulo={title} descripcion="Visitar el repo del proyecto" color={color} />
+				<ul class="lista-tecnologias">
+					{
+						Object.keys(tecnologias).map((tecnologia) => {
+							const Componente = componentes[tecnologia]
+							return (
+								<div class="article-tecnologia">
+									<Componente />
+								</div>
+							)
+						})
+					}
+				</ul>
 			</header>
 
-			<ul class="lista-tecnologias">
-				{
-					Object.keys(tecnologias).map((tecnologia) => {
-						const Componente = componentes[tecnologia]
-						return (
-							<Tecnologias tecnologia={tecnologia}>
-								<Componente />
-							</Tecnologias>
-						)
-					})
-				}
-			</ul>
-
-			<Content style="color: var(--blanco)" />
+			<Content />
 		</main>
 	</section>
 </Layout>
 
 <style>
 	.lista-tecnologias {
-		width: 100%;
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: row;
+		align-items: center;
 		gap: 1.5rem;
+		width: fit-content;
+	}
+
+	.article-tecnologia {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		width: clamp(3rem, 4vw, 10rem);
+		height: clamp(3rem, 4vw, 10rem);
+		padding: 1rem 2rem;
+		border-radius: 50%;
+		transition: box-shadow 0.5s;
+	}
+
+	.contenido-proyecto[data-color='yellow'] .article-tecnologia {
+		border: 0.3rem solid yellow;
+	}
+	.contenido-proyecto[data-color='red'] .article-tecnologia {
+		border: 0.3rem solid red;
+	}
+	.contenido-proyecto[data-color='#567fff'] .article-tecnologia {
+		border: 0.3rem solid #567fff;
+	}
+	.contenido-proyecto[data-color='#56051f'] .article-tecnologia {
+		border: 0.3rem solid #56051f;
+	}
+
+	.contenido-proyecto[data-color='yellow'] .article-tecnologia:hover {
+		box-shadow: 0 0 2rem yellow;
+	}
+	.contenido-proyecto[data-color='red'] .article-tecnologia:hover {
+		box-shadow: 0 0 2rem red;
+	}
+	.contenido-proyecto[data-color='#567fff'] .article-tecnologia:hover {
+		box-shadow: 0 0 2rem #567fff;
+	}
+	.contenido-proyecto[data-color='#56051f'] .article-tecnologia:hover {
+		box-shadow: 0 0 2rem #56051f;
 	}
 
 	section {
@@ -83,6 +121,7 @@ const componentes = {
 		flex-direction: column;
 		align-items: center;
 		gap: 3rem;
+		width: 100%;
 	}
 
 	.contenedor-imagen-proyecto {
@@ -96,12 +135,13 @@ const componentes = {
 		width: clamp(30rem, 55vw, 60rem);
 	}
 
-	main {
+	.contenido-proyecto {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1.3rem;
 		margin-bottom: 5rem;
+		width: min(75%, 100%);
 	}
 
 	.contenido-header {
@@ -113,8 +153,8 @@ const componentes = {
 		margin-bottom: 2rem;
 	}
 
-	main h2 {
-		font-size: clamp(2rem, 5vw, 3rem);
+	.contenido-proyecto h2 {
+		font-size: clamp(2rem, 5vw, 2.5rem);
 		padding: 1rem 2rem;
 		border-radius: 1rem;
 	}
