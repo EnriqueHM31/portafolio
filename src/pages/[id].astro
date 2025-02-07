@@ -1,4 +1,8 @@
 ---
+import '../assets/Proyecto.css'
+import type { Componentes } from '../types'
+import type { GetStaticPaths } from 'astro'
+import { getCollection, render } from 'astro:content'
 import HTML from '../components/Iconos/ic_HTML.astro'
 import CSS from '../components/Iconos/ic_CSS.astro'
 import React from '../components/Iconos/ic_React.astro'
@@ -6,11 +10,7 @@ import IconoAstro from '../components/Iconos/ic_Astro.astro'
 import JS from '../components/Iconos/ic_JS.astro'
 import PHP from '../components/Iconos/ic_PHP.astro'
 import Layout from '../layouts/Layout.astro'
-import { getCollection, render } from 'astro:content'
-import type { GetStaticPaths } from 'astro'
-import '../assets/Proyecto.css'
 import IconoGitHub from '../components/Iconos/IconoGitHub.astro'
-import type { Componentes } from '../types'
 
 export const getStaticPaths = (async () => {
 	const trabajos = await getCollection('proyectos')
