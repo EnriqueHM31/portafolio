@@ -22,50 +22,52 @@ const componentes = {
 } as Componentes
 ---
 
-<a href={slug} class="card_article" data-proyecto={title} role="button">
-	<figure class="tools">
-		<span class="circle-card">
-			<strong class="red box"></strong>
-		</span>
-		<span class="circle-card">
-			<strong class="yellow box"></strong>
-		</span>
-		<span class="circle-card">
-			<strong class="green box"></strong>
-		</span>
-	</figure>
-	<article class="card-content">
-		<header class="contenedor-imagen-proyecto">
-			<div class="card">
-				<div class="wrapper">
-					<img transition:name={`image-${slug}}`} src={`/Proyectos/${image}`} class="cover-image" alt={title} />
+<a aria-label={`Más información sobre el proyecto ${title}`} title={`Más información sobre el proyecto ${title}`} role="link" href={slug} class="card_article" data-proyecto={title}>
+	<div class="card-container">
+		<figure class="tools">
+			<span class="circle-card">
+				<strong class="red box"></strong>
+			</span>
+			<span class="circle-card">
+				<strong class="yellow box"></strong>
+			</span>
+			<span class="circle-card">
+				<strong class="green box"></strong>
+			</span>
+		</figure>
+		<article class="card-content">
+			<header class="contenedor-imagen-proyecto">
+				<div class="card">
+					<div class="wrapper">
+						<img transition:name={`image-${slug}}`} src={`/Proyectos/${image}`} class="cover-image" alt={title} loading="lazy" width="100%" height="auto" />
+					</div>
+					<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} loading="lazy" width="100%" height="auto" />
+					<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} loading="lazy" width="100%" height="auto" />
 				</div>
-				<img src={`/Proyectos/${imageTitle}`} class="title" alt={title} />
-				<img src={`/Proyectos/${thumbnail}`} class="character" alt={title} />
-			</div>
-		</header>
+			</header>
 
-		<main class="contenido-proyecto">
-			<h3>{title}</h3>
+			<main class="contenido-proyecto">
+				<h3>{title}</h3>
 
-			<div class="contenedor-tecnologias">
-				<h4>Tecnologías:</h4>
+				<div class="contenedor-tecnologias">
+					<h4>Tecnologías:</h4>
 
-				<ul class="lista-tecnologias">
-					{
-						Object.keys(tecnologias).map((tecnologia) => {
-							const Componente = componentes[tecnologia]
-							return (
-								<Tecnologias tecnologia={tecnologia}>
-									<Componente />
-								</Tecnologias>
-							)
-						})
-					}
-				</ul>
-			</div>
-		</main>
-	</article>
+					<ul class="lista-tecnologias">
+						{
+							Object.keys(tecnologias).map((tecnologia) => {
+								const Componente = componentes[tecnologia]
+								return (
+									<Tecnologias tecnologia={tecnologia}>
+										<Componente />
+									</Tecnologias>
+								)
+							})
+						}
+					</ul>
+				</div>
+			</main>
+		</article>
+	</div>
 </a>
 
 <style>
@@ -226,7 +228,6 @@ const componentes = {
 		z-index: -1;
 		background: var(--cyan);
 		background: linear-gradient(180deg, var(--cyan), rgba(1, 2, 2, 1) 50%);
-		border: 0.1rem solid var(--cyan);
 		overflow: hidden;
 		transition:
 			transform 0.5s,
