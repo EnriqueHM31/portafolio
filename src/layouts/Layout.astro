@@ -15,11 +15,17 @@ const { title, descripcion } = Astro.props
 		<link rel="shortcut icon" href="./icono.svg" type="image/x-icon" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<link rel="stylesheet" href="/src/assets/fondo.css" />
 		<meta name="description" content={descripcion} />
 		<ClientRouter />
 	</head>
 	<body>
+		<div class="fondo">
+			<div class="circulos"></div>
+			<div class="circulos"></div>
+			<div class="circulos"></div>
+			<div class="circulos"></div>
+			<div class="circulos"></div>
+		</div>
 		<slot />
 	</body>
 </html>
@@ -30,9 +36,7 @@ const { title, descripcion } = Astro.props
 		--negro: #000;
 		--cyan: #04ffe2;
 	}
-	*,
-	*::before,
-	*::after {
+	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
@@ -41,7 +45,10 @@ const { title, descripcion } = Astro.props
 	}
 	html {
 		font-size: 10px;
-		background-color: var(--negro);
+		background-color: hsla(0, 0%, 0%, 1);
+		background-image: radial-gradient(at 21% 56%, hsla(202, 95%, 7%, 1) 0px, transparent 50%), radial-gradient(at 97% 51%, rgb(0, 7, 7) 0px, transparent 50%),
+			radial-gradient(at 95% 3%, rgb(1, 40, 47) 0px, transparent 50%), radial-gradient(at 81% 92%, hsla(184, 100%, 8%, 1) 0px, transparent 50%),
+			radial-gradient(at 10% 96%, rgb(0, 0, 0) 0px, transparent 50%), radial-gradient(at 89% 100%, rgb(8, 20, 18) 0px, transparent);
 	}
 
 	body {
@@ -52,11 +59,13 @@ const { title, descripcion } = Astro.props
 	@font-face {
 		font-family: 'monse';
 		src: url('../assets/monserrat.woff2') format('woff2');
+		font-display: swap;
 	}
 
 	@font-face {
 		font-family: 'out';
 		src: url('../assets/out.woff2') format('woff2');
+		font-display: swap;
 	}
 
 	h1,
@@ -131,6 +140,63 @@ const { title, descripcion } = Astro.props
 		}
 		50% {
 			border-color: white;
+		}
+	}
+
+	.fondo {
+		width: 100%;
+		height: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	.circulos {
+		width: 30rem;
+		height: 30rem;
+		border-radius: 50%;
+		background-color: var(--blanco);
+		position: absolute;
+		filter: blur(2rem);
+		opacity: 0.3;
+	}
+
+	.circulos:nth-child(1) {
+		top: 40%;
+		left: 40%;
+		background: #04ffe2;
+	}
+	.circulos:nth-child(2) {
+		top: 0;
+		right: 0;
+		background: #55aaa0;
+	}
+	.circulos:nth-child(3) {
+		bottom: 0;
+		right: 0;
+		background: #0a6359;
+	}
+	.circulos:nth-child(4) {
+		bottom: 0;
+		left: 0%;
+		background: #4c847d;
+	}
+	.circulos:nth-child(5) {
+		top: 0;
+		left: 0;
+		background: #067377;
+	}
+
+	.circulos {
+		animation: move 1s linear infinite alternate;
+	}
+
+	@keyframes move {
+		0% {
+			transform: translateY(0) scale(0.5);
+		}
+		100% {
+			transform: translateY(-10rem) scale(1);
 		}
 	}
 </style>
