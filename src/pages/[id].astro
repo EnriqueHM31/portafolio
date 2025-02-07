@@ -40,7 +40,7 @@ const componentes = {
 
 <Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
 	<section>
-		<header class="contenedor-imagen-proyecto" style={`background: radial-gradient(circle at top, ${color} 0%, rgba(0, 0, 0, 0) 47%);`}>
+		<header class="contenedor-imagen-proyecto">
 			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} alt={`Imagen del proyecto ${title}`} />
 		</header>
 
@@ -78,10 +78,11 @@ const componentes = {
 	}
 
 	.contenedor-imagen-proyecto {
-		width: 100%;
+		width: 90%;
 		display: flex;
 		justify-content: center;
 		padding-bottom: 5rem;
+		filter: drop-shadow(0 0 2rem red);
 	}
 
 	img {
