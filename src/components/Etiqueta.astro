@@ -24,7 +24,7 @@ const { title, texto } = Astro.props as Etiqueta
 </article>
 
 <style>
-	.card {
+	.etiqueta {
 		width: max(30%, 40%);
 		height: auto;
 		background-color: var(--negro);
@@ -34,19 +34,38 @@ const { title, texto } = Astro.props as Etiqueta
 		grid-template-rows: 40px 1fr;
 	}
 
-	.card .header {
+	.etiqueta .header {
 		display: flex;
 		align-items: center;
 		position: relative;
+		background-color: var(--cyan);
+		border-radius: 1rem 1rem 0 0;
+		padding: 0.5rem 1rem;
 	}
 
-	.card .header .title {
+	.title {
 		font-size: clamp(1.2rem, 5vw, 1.8rem);
-		color: var(--cyan);
-		padding: 0.2rem 1.5rem;
+		color: var(--negro);
+		font-weight: bold;
+		transition:
+			translate 0.5s,
+			background 0.5s,
+			color 0.5s,
+			border-color 0.5s;
+		padding: 1rem 2rem;
+		border-radius: 1rem;
+		border: 0.1rem solid transparent;
 	}
 
-	.card .header .contenido-etiqueta {
+	.etiqueta:hover .title {
+		translate: 0 -2rem 0;
+		background: var(--negro);
+		color: var(--cyan);
+		z-index: 10;
+		border: 0.1rem solid var(--blanco);
+	}
+
+	.etiqueta .header .contenido-etiqueta {
 		position: absolute;
 		top: 2rem;
 		right: 0.5rem;
@@ -58,11 +77,6 @@ const { title, texto } = Astro.props as Etiqueta
 		transition: color 0.3s ease;
 		z-index: 100;
 	}
-
-	.card .header .contenido-etiqueta:hover {
-		color: #eee;
-	}
-
 	.etiqueta .footer {
 		display: flex;
 		flex-direction: column;
