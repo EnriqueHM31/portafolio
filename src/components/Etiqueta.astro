@@ -25,7 +25,7 @@ const { title, texto } = Astro.props as Etiqueta
 
 <style>
 	.etiqueta {
-		width: max(30%, 40%);
+		width: clamp(20rem, 30vw, 25rem);
 		height: auto;
 		background-color: var(--negro);
 		border: 0.1rem solid white;
