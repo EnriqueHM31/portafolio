@@ -1,11 +1,14 @@
 ---
 import { LINKS_NAVEGACION } from '../lib/constantes'
+import IconoMenu from './Iconos/ic_Menu.astro'
+import '../assets/Menu.css'
 ---
 
 <nav class="navegacion">
 	<div class="contenido-nav">
 		<strong class="nombre-portafolio">Luis Enrique Hernandez Marin</strong>
 	</div>
+	<input type="checkbox" id="check" />
 	<ul class="menu">
 		{
 			LINKS_NAVEGACION.map((link) => {
@@ -20,6 +23,9 @@ import { LINKS_NAVEGACION } from '../lib/constantes'
 			})
 		}
 	</ul>
+	<label role="button" for="check">
+		<IconoMenu />
+	</label>
 </nav>
 
 <style>
@@ -41,12 +47,6 @@ import { LINKS_NAVEGACION } from '../lib/constantes'
 	.nombre-portafolio {
 		font-size: clamp(1.5rem, 5vw, 2.5rem);
 		color: var(--blanco);
-	}
-	.menu {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
 	}
 	.menu-item {
 		display: flex;
