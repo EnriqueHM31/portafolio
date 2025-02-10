@@ -1,7 +1,7 @@
 ---
 title: 'Manejo de API Usuarios'
 tecnologias: { HTML: 'HTML', REACT: 'REACT', CSS: 'CSS', JS: 'JS' }
-images: { image: 'api-usuarios.webp', thumbnail: 'api-usuarios-hover.webp', imageTitle: 'api-usuarios-title.webp' }
+images: { image: 'api-usuarios.webp', thumbnail: 'api-usuarios-hover.webp', imageTitle: 'api-usuarios-title.webp', pagina: 'api-usuarios-pagina.webp' }
 color: 'yellow'
 repositorio: 'https://github.com/EnriqueHM31/practica-api-users'
 ---
