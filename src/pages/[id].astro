@@ -25,7 +25,7 @@ export const getStaticPaths = (async () => {
 const { trabajo } = Astro.props
 const { data, slug } = trabajo
 const { title, images, tecnologias, color, repositorio } = data
-const { image } = images
+const { image, pagina } = images
 const { Content } = await render(trabajo)
 
 const componentes = {
@@ -41,7 +41,7 @@ const componentes = {
 <Layout title={title} descripcion={`Pagina de mi proyecto ${title}`}>
 	<section>
 		<header class="contenedor-imagen-proyecto">
-			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${image}`} alt={`Imagen del proyecto ${title}`} />
+			<img transition:name={`image-${slug}}`} transition:animate="fade" src={`/Proyectos/${pagina}`} alt={`Imagen del proyecto ${title}`} />
 		</header>
 
 		<main class="contenido-proyecto" data-color={color}>
@@ -78,15 +78,19 @@ const componentes = {
 	}
 
 	.contenedor-imagen-proyecto {
-		width: 90%;
+		width: 100%;
 		display: flex;
 		justify-content: center;
-		padding-bottom: 5rem;
-		filter: drop-shadow(0 0 2rem red);
+		aspect-ratio: 16 / 9;
+		max-height: 50rem;
 	}
 
 	img {
-		width: clamp(30rem, 55vw, 60rem);
+		object-position: top;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		mask-image: linear-gradient(to top, transparent, black 50%);
 	}
 
 	.contenido-proyecto {
@@ -101,10 +105,11 @@ const componentes = {
 	.contenido-header {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
+		justify-content: center;
+		gap: 4rem;
 		width: 100%;
 		margin-bottom: 2rem;
+		flex-wrap: wrap;
 	}
 
 	.contenido-proyecto h2 {
@@ -144,9 +149,8 @@ const componentes = {
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		width: clamp(3rem, 4vw, 10rem);
-		height: clamp(3rem, 4vw, 10rem);
-		padding: 1rem 2rem;
+		width: clamp(7rem, 5vw, 10rem);
+		height: clamp(7rem, 5vw, 10rem);
 		border-radius: 50%;
 		transition: box-shadow 0.5s;
 	}
