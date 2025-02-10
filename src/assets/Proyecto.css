@@ -31,7 +31,6 @@ li {
 }
 
 .iconos-tecnologias {
-    scale: 1.8;
     transition: translate 0.5s, scale 0.5s, filter 0.5s;
 }
 
