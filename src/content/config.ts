@@ -17,6 +17,7 @@ const proyectos = defineCollection({
             image: z.string(),
             thumbnail: z.string(),
             imageTitle: z.string(),
+            pagina: z.string().optional(),
         }),
         color: z.string().optional(),
         repositorio: z.string().optional(),
