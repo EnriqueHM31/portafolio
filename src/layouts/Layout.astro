@@ -117,10 +117,11 @@ const { title, descripcion } = Astro.props
 	}
 
 	.iconos-tecnologias {
-		max-width: 2rem;
+		max-width: clamp(1.5rem, 5vw, 3rem);
+		min-width: clamp(1.5rem, 5vw, 3rem);
+		width: 100%;
 		height: auto;
 		aspect-ratio: 1 /1;
-		position: relative;
 		z-index: 1;
 	}
 
