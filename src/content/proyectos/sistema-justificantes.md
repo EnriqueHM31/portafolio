@@ -1,7 +1,7 @@
 ---
 title: 'Sistema de Justificantes'
 tecnologias: { HTML: 'HTML', CSS: 'CSS', JS: 'JS', PHP: 'PHP' }
-images: { image: 'sistema-justificantes.webp', thumbnail: 'sistema-justificantes-hover.webp', imageTitle: 'sistema-justificantes-title.webp' }
+images: { image: 'sistema-justificantes.webp', thumbnail: 'sistema-justificantes-hover.webp', imageTitle: 'sistema-justificantes-title.webp', pagina: 'sistema-justificantes-pagina.webp' }
 color: '#56051f'
 repositorio: 'https://github.com/EnriqueHM31/ITSH'
 ---
