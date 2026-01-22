@@ -9,9 +9,20 @@ const LINKS = [
 
 <nav class="fixed top-0 left-0 z-50 w-full px-8 py-6 backdrop-blur-2xl">
     <div class="mx-auto flex max-w-7xl items-center justify-between">
-        <a href="/" class="flex items-center gap-3">
+        <a
+            href="/"
+            class="group relative flex items-center gap-3 px-3 transition-colors duration-300 hover:text-green-400"
+        >
             <img src="/logo.svg" alt="Logo" class="h-11 w-11 rounded-full object-cover" />
             <h1 class="text-xl font-semibold text-white">Desarrollador Web</h1>
+
+            <span
+                class="corner-tl pointer-events-none absolute -top-1.5 -left-1.5 size-7 border-t-[3px] border-l-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:translate-2 group-hover:opacity-100"
+            ></span>
+
+            <span
+                class="corner-br pointer-events-none absolute -right-1.5 -bottom-1.5 size-7 border-r-[3px] border-b-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:-translate-2 group-hover:opacity-100"
+            ></span>
         </a>
 
         <ul class="flex gap-12">
@@ -25,9 +36,9 @@ const LINKS = [
                         >
                             {link.name}
 
-                            <span class="corner-tl pointer-events-none absolute -top-1.5 -left-1.5 size-7 border-t-[3px] border-l-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:opacity-100" />
+                            <span class="corner-tl pointer-events-none absolute -top-1.5 -left-1.5 size-7 border-t-[3px] border-l-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:translate-1 group-hover:opacity-100" />
 
-                            <span class="corner-br pointer-events-none absolute -right-1.5 -bottom-1.5 size-7 border-r-[3px] border-b-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:opacity-100" />
+                            <span class="corner-br pointer-events-none absolute -right-1.5 -bottom-1.5 size-7 border-r-[3px] border-b-[3px] border-green-400 opacity-0 transition-all duration-600 group-hover:-translate-1 group-hover:opacity-100" />
                         </button>
                     </li>
                 ))
