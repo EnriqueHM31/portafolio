@@ -1,0 +1,119 @@
+---
+/*
+  Cursor glow siempre activo
+  Reveal solo dentro de zonas verdes
+*/
+---
+
+<div class="relative min-h-screen overflow-hidden bg-black">
+    <!-- Fondo con textura -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#020617,#000)]"></div>
+
+    <!-- Orbes animados -->
+    <div class="pointer-events-none absolute inset-0">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div id="cursor-glow"></div>
+
+    <slot />
+</div>
+
+<style>
+    /* Cursor glow (siempre sigue) */
+    #cursor-glow {
+        position: fixed;
+        inset: 0;
+        width: 620px;
+        height: 620px;
+        border-radius: 9999px;
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.15), transparent 70%);
+        filter: blur(70px);
+        transform: translate(-50%, -50%);
+        z-index: 50;
+    }
+
+    /* Orbs */
+    .orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(90px);
+        opacity: 0.25;
+    }
+
+    .orb-1 {
+        width: 420px;
+        height: 420px;
+        background: #22c55e;
+        top: -140px;
+        left: -140px;
+    }
+
+    .orb-2 {
+        width: 320px;
+        height: 320px;
+        background: #16a34a;
+        bottom: -120px;
+        right: -120px;
+    }
+
+    .orb-3 {
+        width: 260px;
+        height: 260px;
+        background: #4ade80;
+        top: 45%;
+        left: 60%;
+    }
+
+    /* Reveal effect SOLO cuando está encima */
+    .reveal-zone:hover ~ #cursor-glow {
+        mix-blend-mode: screen;
+    }
+</style>
+
+<script>
+    import gsap from "gsap";
+
+    const cursor = document.getElementById("cursor-glow");
+
+    window.addEventListener("mousemove", (e) => {
+        gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.2,
+            ease: "power3.out",
+        });
+    });
+
+    // Animación orbs
+    gsap.to(".orb-1", {
+        x: 120,
+        y: 80,
+        duration: 16,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+    });
+
+    gsap.to(".orb-2", {
+        x: -100,
+        y: -120,
+        duration: 18,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+    });
+
+    gsap.to(".orb-3", {
+        x: -80,
+        y: 100,
+        duration: 14,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+    });
+</script>
