@@ -3,3 +3,9 @@
 body {
     font-family: 'Balsamiq Sans', system-ui;
 }
+
+p,
+a,
+span {
+    font-family: 'Montserrat Variable', sans-serif !important;
+}
