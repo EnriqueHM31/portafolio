@@ -1,11 +1,13 @@
 ---
 import Fondo from "../components/Fondo.astro";
+import Navegacion from "../components/NavBar.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Portafolio" descripcion="Este el portafolio de mi trabajo">
-    <Fondo>
-        <h1>Hola Mundo</h1>
-        <p>Este es mi portafolio</p>
-    </Fondo>
+    <Fondo />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Navegacion />
+        <main></main>
+    </div>
 </Layout>
