@@ -11,10 +11,10 @@ const LINKS = [
     <div class="mx-auto flex max-w-7xl items-center justify-between">
   
       <!-- IZQUIERDA -->
-      <div class="flex items-center gap-3">
+      <a href="/" class="flex items-center gap-3">
         <img src="/logo.svg" alt="Logo" class="h-11 w-11 rounded-full object-cover" />
         <h1 class="text-xl font-semibold text-white">Desarrollador Web</h1>
-      </div>
+      </a>
   
       <!-- LINKS -->
       <ul class="flex gap-12">
@@ -53,7 +53,7 @@ const LINKS = [
 </style>
 
 
-<script is:inline type="module">
+<script is:inline>
     function scrollToSection(id) {
       const navHeight = 96; // altura aproximada del navbar
       const el = document.getElementById(id);
@@ -67,6 +67,10 @@ const LINKS = [
       });
     }
   
+  </script>
+  
+  <script is:inline type="module" >
+    
     // SCROLL SPY
     const buttons = document.querySelectorAll(".nav-btn");
     const sections = [...buttons].map((btn) => {
@@ -102,4 +106,3 @@ const LINKS = [
       if (section) observer.observe(section);
     });
   </script>
-  
