@@ -1,13 +1,6 @@
 ---
-import type { AstroComponentDirectives } from "astro";
-import GITHUB from "../components/Iconos/GitHub.astro";
 import EMAIL from "../components/Iconos/Email.astro";
-
-interface RedesSociales {
-    name: string;
-    link: string;
-    Icon: AstroComponentDirectives;
-}
+import GITHUB from "../components/Iconos/GitHub.astro";
 
 const RedesSociales = [
     { name: "Github", link: "https://github.com/EnriqueHM31", Icon: GITHUB },
@@ -25,15 +18,14 @@ const RedesSociales = [
             necesita para ofrecer soluciones eficientes, escalables y alineadas con cada proyecto.
         </p>
 
-        <div class="flex flex-row gap-2">
+        <div class="flex flex-row gap-5">
             {
                 RedesSociales.map(({ name, link, Icon }) => (
-                    <a href={link} target="_blank" rel="noreferrer" class="Btn">
-                        <div class="sign">
+                    <a href={link} target="_blank" rel="noreferrer" class="wrapper">
+                        <div class="icon icono-wrapper">
+                            <span class="tooltip">{name}</span>
                             <Icon class="h-6 w-6 text-zinc-200 transition hover:text-white" />
                         </div>
-
-                        <div class="text">{name}</div>
                     </a>
                 ))
             }
@@ -44,72 +36,96 @@ const RedesSociales = [
 </section>
 
 <style>
-    /* From Uiverse.io by Gaurang7717 */
-    .Btn {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 45px;
-        height: 45px;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        transition-duration: 0.3s;
-        box-shadow: 2px 2px 10px rgba(59, 238, 4, 0.199);
-        border: 2px solid rgb(45, 253, 3)
-        background-color: #000;
+    h1 {
+        text-shadow:
+            2px 2px 10px rgba(15, 17, 15, 0.966),
+            2px 5px 2px rgba(1, 255, 22, 0.966),
+            2px 5px 2px rgb(30, 255, 0);
     }
-
-    .sign {
-        width: 100%;
-        transition-duration: 0.3s;
+    /* From Uiverse.io by david-mohseni */
+    .wrapper {
         display: flex;
+        list-style: none;
         align-items: center;
-        border: 2px solid rgb(45, 253, 3)
-
         justify-content: center;
+        box-shadow: 2px 5px 15px rgb(45, 253, 3);
+        border-radius: 50%;
     }
 
-    .sign svg {
-        width: 25px;
+    .wrapper .icon {
+        position: relative;
+        background: #000;
+        border-radius: 50%;
+        border: 2px solid rgb(45, 253, 3);
+        box-shadow: 2px 10px 20px rgb(45, 253, 3);
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .sign svg path {
-        fill: white;
-    }
-    .text {
+    .wrapper .tooltip {
         position: absolute;
-        right: 0%;
-        width: 0%;
+        top: 0;
+        font-size: 14px;
+        background: #fff;
+        color: #fff;
+        padding: 5px 8px;
+        border-radius: 10px;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
         opacity: 0;
-        color: white;
-        font-size: 1.2em;
-        font-weight: 600;
-        transition-duration: 0.3s;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .Btn:hover {
-        width: 135px;
-        border-radius: 40px;
-        transition-duration: 0.3s;
+    .wrapper .tooltip::before {
+        position: absolute;
+        content: "";
+        height: 8px;
+        width: 8px;
+        background: #fff;
+        bottom: -3px;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
-    .Btn:hover .sign {
-        width: 30%;
-        transition-duration: 0.3s;
-        padding-left: 10px;
-    }
-
-    .Btn:hover .text {
+    .wrapper .icon:hover .tooltip {
+        top: -45px;
         opacity: 1;
-        width: 70%;
-        transition-duration: 0.3s;
-        padding-right: 10px;
+        visibility: visible;
+        pointer-events: auto;
     }
-    .Btn:active {
-        transform: translate(2px, 2px);
+
+    .wrapper .icon:hover span,
+    .wrapper .icon:hover .tooltip {
+        text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper .icono-wrapper:hover .tooltip,
+    .wrapper .icono-wrapper:hover .tooltip::before {
+        background: rgb(16, 119, 4);
+        color: #fff;
+    }
+
+    .wrapper .twitter:hover,
+    .wrapper .twitter:hover .tooltip,
+    .wrapper .twitter:hover .tooltip::before {
+        background: #1da1f2;
+        color: #fff;
+    }
+
+    .wrapper .instagram:hover,
+    .wrapper .instagram:hover .tooltip,
+    .wrapper .instagram:hover .tooltip::before {
+        background: #e4405f;
+        color: #fff;
     }
 </style>
 <script>
