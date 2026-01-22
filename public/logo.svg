@@ -1,0 +1,41 @@
+<svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020617"></stop>
+      <stop offset="100%" stop-color="#0f172a"></stop>
+    </linearGradient>
+
+    <!-- Hacker green gradient -->
+    <linearGradient id="textGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e"></stop>
+      <stop offset="100%" stop-color="#16a34a"></stop>
+    </linearGradient>
+
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="coloredBlur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Rounded background -->
+  <rect x="16" y="16" width="288" height="288" rx="32" fill="url(#bgGradient)" stroke="#22c55e" stroke-opacity="0.3" stroke-width="2"></rect>
+
+  <!-- Subtle grid lines (hacker vibe) -->
+  <g opacity="0.06">
+    <line x1="0" y1="160" x2="320" y2="160" stroke="#22c55e"></line>
+    <line x1="160" y1="0" x2="160" y2="320" stroke="#22c55e"></line>
+  </g>
+
+  <!-- HM Text -->
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="120" font-weight="800" letter-spacing="8" font-family="monospace" fill="url(#textGradient)" filter="url(#glow)">
+    HM
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="80" y="245" width="160" height="4" rx="2" fill="#22c55e" opacity="0.7"></rect>
+</svg>
