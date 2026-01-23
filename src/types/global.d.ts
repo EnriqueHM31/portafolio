@@ -1,0 +1,11 @@
+export { };
+
+declare global {
+    interface Window {
+        toast: {
+            success: (message: string) => void;
+            error: (message: string) => void;
+            info: (message: string) => void;
+        };
+    }
+}
