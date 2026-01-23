@@ -119,20 +119,6 @@ const RedesSociales = [
         background: rgb(16, 119, 4);
         color: #fff;
     }
-
-    .wrapper .twitter:hover,
-    .wrapper .twitter:hover .tooltip,
-    .wrapper .twitter:hover .tooltip::before {
-        background: #1da1f2;
-        color: #fff;
-    }
-
-    .wrapper .instagram:hover,
-    .wrapper .instagram:hover .tooltip,
-    .wrapper .instagram:hover .tooltip::before {
-        background: #e4405f;
-        color: #fff;
-    }
 </style>
 <script>
     import gsap from "gsap";
@@ -160,7 +146,7 @@ const RedesSociales = [
         // =========================
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: ".section-hero", // contenedor padre
+                trigger: "#home", // contenedor padre
                 start: "top 80%",
                 once: true, // 🔑 evita reanimaciones
             },
