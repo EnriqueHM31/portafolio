@@ -4,6 +4,7 @@ import "@fontsource/balsamiq-sans/400.css";
 import "@fontsource/balsamiq-sans/700.css";
 import "@fontsource-variable/montserrat";
 import Footer from "../components/Footer.astro";
+import Toast from "../components/Toast.astro";
 const { title, descripcion } = Astro.props;
 ---
 
@@ -19,5 +20,39 @@ const { title, descripcion } = Astro.props;
     <body class="bg-black text-white">
         <slot />
         <Footer />
+        <Toast />
     </body>
 </html>
+
+<style is:global>
+    <style > .toast {
+        min-width: 260px;
+        max-width: 360px;
+        padding: 14px 18px;
+        border-radius: 10px;
+        background: #000;
+        color: white;
+        border: 1px solid rgb(45, 253, 3);
+        box-shadow: 0 0 20px rgba(45, 253, 3, 0.4);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        pointer-events: auto;
+        background-color: black;
+    }
+
+    .toast-success {
+        border-color: rgb(45, 253, 3);
+    }
+
+    .toast-error {
+        border-color: rgb(255, 80, 80);
+        box-shadow: 0 0 20px rgba(255, 80, 80, 0.4);
+    }
+
+    .toast-info {
+        border-color: rgb(0, 180, 255);
+        box-shadow: 0 0 20px rgba(0, 180, 255, 0.4);
+    }
+</style>
