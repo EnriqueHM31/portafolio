@@ -9,8 +9,8 @@ const RedesSociales = [
 ] as const;
 ---
 
-<section class="relative flex min-h-screen items-center justify-center gap-10" id="home">
-    <div class="container flex flex-3 flex-col gap-5">
+<section class="relative mb-30 flex min-h-screen flex-col items-center justify-center gap-10 md:flex-row" id="home">
+    <div class="order-2 container flex flex-3 flex-col gap-5 md:order-1">
         <h1 class="split text-5xl font-bold text-white">Dev Luis Enrique Hernández Marín</h1>
         <p class="text-descripcion ml-1 text-base leading-7 font-normal text-pretty text-white">
             Soy desarrollador web apasionado por crear experiencias digitales claras, funcionales y bien pensadas.
@@ -33,7 +33,9 @@ const RedesSociales = [
         </div>
     </div>
 
-    <div class="img-foto relative flex size-110 flex-2 items-center justify-center">
+    <div
+        class="img-foto relative order-1 mt-30 flex size-110 min-h-[50dvh] flex-2 items-center justify-center md:order-2 md:mt-0 md:min-h-auto"
+    >
         <div class="absolute h-full w-full">
             <img src={FONDOIMAGEN.src} alt="Fondo" class="h-full w-full object-cover" />
         </div>
