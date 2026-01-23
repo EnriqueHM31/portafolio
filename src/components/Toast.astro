@@ -1,0 +1,43 @@
+<div
+    id="toast-root"
+    class="pointer-events-none fixed bottom-10 left-1/2 z-1000 -translate-x-1/2 -translate-y-1/2 transform"
+>
+</div>
+
+<script>
+    import gsap from "gsap";
+
+    const root = document.getElementById("toast-root") as HTMLElement;
+
+    function showToast(message: string, type: "success" | "error" | "info") {
+        const toast = document.createElement("div");
+        toast.className = `toast toast-${type}`;
+        toast.textContent = message;
+
+        console.log({ toast, root });
+        root.appendChild(toast);
+
+        gsap.fromTo(
+            toast,
+            { opacity: 0, y: -20, scale: 0.95 },
+            { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "expo.out" }
+        );
+
+        setTimeout(() => {
+            gsap.to(toast, {
+                opacity: 0,
+                y: -20,
+                scale: 0.9,
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => toast.remove(),
+            });
+        }, 2800);
+    }
+
+    window.toast = {
+        success: (msg: string) => showToast(msg, "success"),
+        error: (msg: string) => showToast(msg, "error"),
+        info: (msg: string) => showToast(msg, "info"),
+    };
+</script>
