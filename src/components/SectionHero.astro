@@ -19,10 +19,10 @@ const RedesSociales = [
             necesita para ofrecer soluciones eficientes, escalables y alineadas con cada proyecto.
         </p>
 
-        <div class="flex flex-row gap-5">
+        <div class="flex flex-row gap-8">
             {
                 RedesSociales.map(({ name, link, Icon }) => (
-                    <a href={link} target="_blank" rel="noreferrer" class="wrapper">
+                    <a href={link} target="_blank" rel="noreferrer" class="wrapper link-redes">
                         <div class="icon icono-wrapper">
                             <span class="tooltip">{name}</span>
                             <Icon class="h-6 w-6 text-zinc-200 transition hover:text-white" />
@@ -33,7 +33,7 @@ const RedesSociales = [
         </div>
     </div>
 
-    <div class="relative flex size-110 flex-2 items-center justify-center">
+    <div class="img-foto relative flex size-110 flex-2 items-center justify-center">
         <div class="absolute h-full w-full">
             <img src={FONDOIMAGEN.src} alt="Fondo" class="h-full w-full object-cover" />
         </div>
@@ -135,57 +135,81 @@ const RedesSociales = [
     }
 </style>
 <script>
-    /*
     import gsap from "gsap";
     import SplitText from "gsap/SplitText";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    gsap.registerPlugin(SplitText);
-
-    console.clear();
+    gsap.registerPlugin(SplitText, ScrollTrigger);
 
     document.fonts.ready.then(() => {
-        gsap.set(".split", { opacity: 1 });
-        gsap.set(".text-descripcion", { opacity: 1 });
+        // =========================
+        // SPLIT TEXT
+        // =========================
+        const titleSplit = new SplitText(".split", {
+            type: "words,lines",
+            linesClass: "line",
+        });
 
-        let split: any;
-        SplitText.create(".split", {
-            type: "words,lines,chars",
-            linesClass: "chars",
-            autoSplit: true,
-            mask: "chars",
-            onSplit: (self) => {
-                split = gsap.from(self.chars, {
-                    duration: 0.1,
-                    yPercent: 200,
-                    opacity: 0,
-                    stagger: 0.1,
-                    ease: "expo.out",
-                });
-                return split;
+        const descSplit = new SplitText(".text-descripcion", {
+            type: "lines",
+            linesClass: "line",
+        });
+
+        // =========================
+        // TIMELINE PRINCIPAL
+        // =========================
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".section-hero", // contenedor padre
+                start: "top 80%",
+                once: true, // 🔑 evita reanimaciones
             },
         });
 
-        SplitText.create(".text-descripcion", {
-            type: "words,lines,chars",
-            linesClass: "lines",
-            autoSplit: true,
-            mask: "lines",
-            onSplit: (self) => {
-                split = gsap.from(self.lines, {
+        // =========================
+        // ANIMACIONES
+        // =========================
+        tl.from(titleSplit.words, {
+            yPercent: 300,
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: "expo.out",
+        })
+
+            .from(
+                descSplit.lines,
+                {
+                    yPercent: 200,
+                    opacity: 0,
                     duration: 0.9,
-                    yPercent: 200,
-                    opacity: 0,
-                    stagger: 0.3,
-                    ease: "expo.inOut",
-                    delay: 2.6,
-                });
-                return split;
-            },
-        });
+                    stagger: 0.18,
+                    ease: "expo.out",
+                },
+                "-=0.6"
+            ) // solape suave
 
-        document.querySelector("button")?.addEventListener("click", (e) => {
-            split.timeScale(0.2).play(0);
-        });
+            .from(
+                ".link-redes",
+                {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.25,
+                    ease: "power3.out",
+                },
+                "-=0.4"
+            )
+
+            .from(
+                ".img-foto",
+                {
+                    opacity: 0,
+                    scale: 0.95,
+                    duration: 0.8,
+                    ease: "power3.out",
+                },
+                "-=0.5"
+            );
     });
-    */
 </script>
