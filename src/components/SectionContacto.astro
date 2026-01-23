@@ -2,8 +2,8 @@
 import LOGO from "../../public/logo.jpg";
 ---
 
-<section id="contacto" class="flex min-h-screen items-center justify-center text-white">
-    <div class="grid w-full grid-cols-1 gap-16 md:grid-cols-2">
+<section class="contacto flex min-h-screen items-center justify-center text-white">
+    <div class="grid w-full grid-cols-1 gap-16 md:grid-cols-2" id="contacto">
         <!-- INFO / LOGO -->
         <div class="contact-info flex w-full flex-col items-start justify-center gap-5">
             <img src={LOGO.src} alt="Logo" class="w-[90px]" />
@@ -14,7 +14,10 @@ import LOGO from "../../public/logo.jpg";
 
             <div
                 class="mt-4 w-full max-w-3/4 cursor-pointer rounded-lg border border-[rgb(45,253,3)] p-4 transition hover:bg-[rgba(45,253,3,0.1)]"
-                onclick="navigator.clipboard.writeText('luisenriquehernandezmarin0@gmail.com')"
+                onclick="
+                navigator.clipboard.writeText('luisenriquehernandezmarin0@gmail.com');
+                window.toast.success('Email copiado ✨');
+              "
             >
                 <span class="block text-xs text-zinc-400"> Email </span>
 
@@ -35,6 +38,8 @@ import LOGO from "../../public/logo.jpg";
             <form class="flex flex-col gap-4">
                 <input
                     type="text"
+                    id="name"
+                    autocomplete="on"
                     placeholder="Tu nombre"
                     required
                     class="rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
@@ -43,12 +48,15 @@ import LOGO from "../../public/logo.jpg";
                 <input
                     type="email"
                     placeholder="Tu email"
+                    id="email"
+                    autocomplete="on"
                     required
                     class="rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
                 />
 
                 <textarea
                     rows="5"
+                    id="message"
                     placeholder="Cuéntame tu idea..."
                     required
                     class="resize-none rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
@@ -75,6 +83,7 @@ import LOGO from "../../public/logo.jpg";
         scrollTrigger: {
             trigger: ".contacto",
             start: "top 80%",
+            toggleActions: "play reverse play reverse",
         },
         opacity: 0,
         x: 100,
@@ -86,6 +95,7 @@ import LOGO from "../../public/logo.jpg";
         scrollTrigger: {
             trigger: ".contacto",
             start: "top 75%",
+            toggleActions: "play reverse play reverse",
         },
         opacity: 0,
         x: -100,
