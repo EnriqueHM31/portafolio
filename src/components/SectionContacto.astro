@@ -1,1 +1,96 @@
-<section class="min-h-screen" id="contacto">contacto</section>
+---
+import LOGO from "../../public/logo.jpg";
+---
+
+<section id="contacto" class="flex min-h-screen items-center justify-center text-white">
+    <div class="grid w-full grid-cols-1 gap-16 md:grid-cols-2">
+        <!-- INFO / LOGO -->
+        <div class="contact-info flex w-full flex-col items-start justify-center gap-5">
+            <img src={LOGO.src} alt="Logo" class="w-[90px]" />
+
+            <h3 class="text-2xl font-bold">Luis Enrique Hernández</h3>
+
+            <p class="text-zinc-400">Desarrollador Web</p>
+
+            <div
+                class="mt-4 w-full max-w-3/4 cursor-pointer rounded-lg border border-[rgb(45,253,3)] p-4 transition hover:bg-[rgba(45,253,3,0.1)]"
+                onclick="navigator.clipboard.writeText('luisenriquehernandezmarin0@gmail.com')"
+            >
+                <span class="block text-xs text-zinc-400"> Email </span>
+
+                <strong class="block"> luixxxxxxxxxxxxxxxxx@gmail.com </strong>
+
+                <small class="text-xs text-zinc-400"> (click para copiar) </small>
+            </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="contact-form flex flex-col gap-6">
+            <h2 class="text-5xl font-bold text-[rgb(45,253,3)]">Hablemos 👋</h2>
+
+            <p class="max-w-11/12 text-zinc-300">
+                ¿Tienes una idea, proyecto o quisiera contratarme? Escríbeme y lo platicamos juntos.
+            </p>
+
+            <form class="flex flex-col gap-4">
+                <input
+                    type="text"
+                    placeholder="Tu nombre"
+                    required
+                    class="rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
+                />
+
+                <input
+                    type="email"
+                    placeholder="Tu email"
+                    required
+                    class="rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
+                />
+
+                <textarea
+                    rows="5"
+                    placeholder="Cuéntame tu idea..."
+                    required
+                    class="resize-none rounded-md border border-[rgb(45,253,3)] bg-transparent px-4 py-3 text-white outline-none focus:shadow-[0_0_15px_rgba(45,253,3,0.6)]"
+                ></textarea>
+
+                <button
+                    type="submit"
+                    class="mt-4 cursor-pointer rounded-md bg-[rgb(45,253,3)] py-3 font-bold text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-green-500"
+                >
+                    Enviar mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".contact-form", {
+        scrollTrigger: {
+            trigger: ".contacto",
+            start: "top 80%",
+        },
+        opacity: 0,
+        x: 100,
+        duration: 1,
+        ease: "expo.out",
+    });
+
+    gsap.from(".contact-info", {
+        scrollTrigger: {
+            trigger: ".contacto",
+            start: "top 75%",
+        },
+        opacity: 0,
+        x: -100,
+        duration: 1,
+        delay: 0.2,
+        ease: "expo.out",
+    });
+</script>
