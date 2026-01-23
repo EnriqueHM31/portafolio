@@ -81,7 +81,6 @@ const LINKS = [
         return section;
     });
 
-    console.log(sections);
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
@@ -108,7 +107,6 @@ const LINKS = [
 
 <script>
     import gsap from "gsap";
-    console.log(gsap.version);
 
     gsap.from(".link-home", {
         duration: 1.5,
