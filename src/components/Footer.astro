@@ -3,7 +3,7 @@ import GITHUB from "../components/Iconos/GitHub.astro";
 import EMAIL from "../components/Iconos/Email.astro";
 ---
 
-<footer id="footer" class="border-t border-[rgb(45,253,3)] bg-black text-white">
+<footer id="footer" class="min-h-[100px] overflow-hidden border-t border-[rgb(45,253,3)] bg-black text-white">
     <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-6 py-10 md:flex-row">
         <!-- LEFT -->
         <p class="flex-1 text-sm text-zinc-400">
@@ -37,22 +37,3 @@ import EMAIL from "../components/Iconos/Email.astro";
         </div>
     </div>
 </footer>
-
-<script>
-    import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.from("#footer", {
-        scrollTrigger: {
-            trigger: "#footer",
-            start: "top 90%",
-            toggleActions: "play none play play",
-        },
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: "power3.out",
-    });
-</script>
