@@ -5,7 +5,7 @@ const { title } = Astro.props;
 <h2 class="title-animate text-5xl">{title}</h2>
 <script>
     import gsap from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import ScrollTrigger from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +14,6 @@ const { title } = Astro.props;
             trigger: ".title-animate",
             start: "top 90%",
             toggleActions: "play reverse play reverse",
-            markers: true,
         },
         opacity: 0,
         scale: 0.3,
