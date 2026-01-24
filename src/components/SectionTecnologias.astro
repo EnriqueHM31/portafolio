@@ -8,10 +8,13 @@ import GitHub from "./Iconos/GitHub.astro";
 import Tailwind from "./Iconos/Tailwind.astro";
 import Node from "./Iconos/Node.astro";
 import Mysql from "./Iconos/Mysql.astro";
+import Express from "./Iconos/Express.astro";
+import Html from "./Iconos/Html.astro";
+import Css from "./Iconos/Css.astro";
 ---
 
 <!-- From Uiverse.io by ilkhoeri -->
-<section class="wrapper my-30 min-h-screen">
+<section class="wrapper my-50 min-h-screen">
     <div class="inner" style="--quantity: 10;">
         <div class="center-text">
             <TitleSection title="Herramientas de trabajo" />
@@ -59,19 +62,28 @@ import Mysql from "./Iconos/Mysql.astro";
                 <Tailwind />
             </div>
         </picture>
-        <picture class="card" style="--index: 7;--color-card: 252, 142, 239;">
-            <div class="img"></div>
+        <picture class="card" style="--index: 7;--color-card: 255, 90, 0;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">HTML</p>
+                <Html />
+            </div>
         </picture>
-        <picture class="card" style="--index: 8;--color-card: 50, 50, 50;">
+        <picture class="card" style="--index: 8;--color-card: 0, 59, 148;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">CSS</p>
+                <Css />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 9;--color-card: 50, 50, 50;">
             <div class="img">
                 <p class="text-2xl font-bold text-white">GitHub</p>
                 <GitHub />
             </div>
         </picture>
-        <picture class="card" style="--index: 9;--color-card: 142, 202, 252;">
+        <picture class="card" style="--index: 10;--color-card: 138, 138, 134;">
             <div class="img flex flex-col items-center justify-center gap-4 p-4">
-                <p class="text-2xl font-bold text-white">React</p>
-                <React />
+                <p class="text-2xl font-bold text-white">Express JS</p>
+                <Express />
             </div>
         </picture>
     </div>
@@ -114,7 +126,7 @@ import Mysql from "./Iconos/Mysql.astro";
     .inner {
         --w: 200px;
         --h: 250px;
-        --translateZ: calc((var(--w) + var(--h)) + 0px);
+        --translateZ: calc((var(--w) + var(--h)) - 10px);
         --rotateX: -15deg;
         --perspective: 1000px;
         position: absolute;
@@ -169,64 +181,3 @@ import Mysql from "./Iconos/Mysql.astro";
         height: 100%;
     }
 </style>
-
-<script>
-    import gsap from "gsap";
-    import ScrollTrigger from "gsap/ScrollTrigger";
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const initCarouselScroll = () => {
-        const inner = document.querySelector(".inner");
-        const cards = gsap.utils.toArray(".card") as HTMLElement[];
-
-        // ROTACIÓN DEL CARRUSEL CON SCROLL
-        gsap.to(inner, {
-            rotateY: 360,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".wrapper",
-                start: "top center",
-                end: "bottom center",
-                scrub: 1.2,
-            },
-        });
-
-        // PROFUNDIDAD / SCALE DE LAS CARDS
-        cards.forEach((card, i) => {
-            gsap.fromTo(
-                card,
-                { scale: 0.85, opacity: 0.4 },
-                {
-                    scale: 1,
-                    opacity: 1,
-                    scrollTrigger: {
-                        trigger: ".wrapper",
-                        start: "top center",
-                        end: "bottom center",
-                        scrub: true,
-                    },
-                }
-            );
-        });
-
-        cards.forEach((card: HTMLElement) => {
-            ScrollTrigger.create({
-                trigger: card,
-                start: "top center",
-                end: "bottom center",
-                onUpdate: (self) => {
-                    gsap.to(card, {
-                        filter: self.progress > 0.45 && self.progress < 0.55 ? "brightness(1.3)" : "brightness(0.8)",
-                        duration: 0.3,
-                    });
-                },
-            });
-        });
-    };
-
-    // Astro safe init
-    if (typeof window !== "undefined") {
-        window.addEventListener("load", initCarouselScroll);
-    }
-</script>
