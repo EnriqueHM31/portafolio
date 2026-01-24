@@ -1,0 +1,232 @@
+---
+import TitleSection from "./TitleSection.astro";
+import React from "./Iconos/React.astro";
+import IcAstro from "./Iconos/IcAstro.astro";
+import Typescript from "./Iconos/Typescript.astro";
+import Javascript from "./Iconos/Javascript.astro";
+import GitHub from "./Iconos/GitHub.astro";
+import Tailwind from "./Iconos/Tailwind.astro";
+import Node from "./Iconos/Node.astro";
+import Mysql from "./Iconos/Mysql.astro";
+---
+
+<!-- From Uiverse.io by ilkhoeri -->
+<section class="wrapper my-30 min-h-screen">
+    <div class="inner" style="--quantity: 10;">
+        <div class="center-text">
+            <TitleSection title="Herramientas de trabajo" />
+        </div>
+
+        <picture class="card" style="--index: 0;--color-card: 0, 107, 201;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Typescript</p>
+                <Typescript />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 1;--color-card: 240, 157, 34;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Mysql</p>
+                <Mysql />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 2;--color-card: 142, 252, 157;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Node Js</p>
+                <Node />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 3;--color-card: 142, 202, 252;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">React</p>
+                <React />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 4;--color-card: 252, 252, 142;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Javascript</p>
+                <Javascript />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 5;--color-card: 255, 255, 255;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Astro</p>
+                <IcAstro />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 6;--color-card: 74, 171, 255;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">Tailwind</p>
+                <Tailwind />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 7;--color-card: 252, 142, 239;">
+            <div class="img"></div>
+        </picture>
+        <picture class="card" style="--index: 8;--color-card: 50, 50, 50;">
+            <div class="img">
+                <p class="text-2xl font-bold text-white">GitHub</p>
+                <GitHub />
+            </div>
+        </picture>
+        <picture class="card" style="--index: 9;--color-card: 142, 202, 252;">
+            <div class="img flex flex-col items-center justify-center gap-4 p-4">
+                <p class="text-2xl font-bold text-white">React</p>
+                <React />
+            </div>
+        </picture>
+    </div>
+</section>
+
+<style>
+    .center-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: clamp(2rem, 10vw, 5rem);
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+
+        color: white;
+        text-shadow:
+            0 0 15px rgba(255, 255, 255, 0.35),
+            0 0 40px rgba(142, 249, 252, 0.35);
+
+        transform: translateZ(calc(var(--translateZ) -400px)) rotateX(var(--rotateX));
+
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inner {
+        --w: 200px;
+        --h: 250px;
+        --translateZ: calc((var(--w) + var(--h)) + 0px);
+        --rotateX: -15deg;
+        --perspective: 1000px;
+        position: absolute;
+        width: var(--w);
+        height: var(--h);
+        top: 25%;
+        left: calc(50% - (var(--w) / 2) - 2.5px);
+        z-index: 2;
+        transform-style: preserve-3d;
+        transform: perspective(var(--perspective));
+        animation: rotating 20s linear infinite;
+    }
+    @keyframes rotating {
+        from {
+            transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
+        }
+        to {
+            transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1.5turn);
+        }
+    }
+
+    .card {
+        position: absolute;
+        border: 2px solid rgba(var(--color-card));
+        border-radius: 12px;
+        overflow: hidden;
+        inset: 0;
+        transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+    }
+
+    .img {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 15px;
+        padding: 30px;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #0000
+            radial-gradient(
+                circle,
+                rgba(var(--color-card), 0.2) 0%,
+                rgba(var(--color-card), 0.6) 80%,
+                rgba(var(--color-card), 0.9) 100%
+            );
+    }
+    .img svg {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<script>
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const initCarouselScroll = () => {
+        const inner = document.querySelector(".inner");
+        const cards = gsap.utils.toArray(".card") as HTMLElement[];
+
+        // ROTACIÓN DEL CARRUSEL CON SCROLL
+        gsap.to(inner, {
+            rotateY: 360,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".wrapper",
+                start: "top center",
+                end: "bottom center",
+                scrub: 1.2,
+            },
+        });
+
+        // PROFUNDIDAD / SCALE DE LAS CARDS
+        cards.forEach((card, i) => {
+            gsap.fromTo(
+                card,
+                { scale: 0.85, opacity: 0.4 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: ".wrapper",
+                        start: "top center",
+                        end: "bottom center",
+                        scrub: true,
+                    },
+                }
+            );
+        });
+
+        cards.forEach((card: HTMLElement) => {
+            ScrollTrigger.create({
+                trigger: card,
+                start: "top center",
+                end: "bottom center",
+                onUpdate: (self) => {
+                    gsap.to(card, {
+                        filter: self.progress > 0.45 && self.progress < 0.55 ? "brightness(1.3)" : "brightness(0.8)",
+                        duration: 0.3,
+                    });
+                },
+            });
+        });
+    };
+
+    // Astro safe init
+    if (typeof window !== "undefined") {
+        window.addEventListener("load", initCarouselScroll);
+    }
+</script>
