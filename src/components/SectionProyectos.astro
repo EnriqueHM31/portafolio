@@ -32,12 +32,9 @@ const PROYECTOS = [
 ];
 ---
 
-<section class="mt-40 flex min-h-screen flex-col items-center justify-center">
-    <div id="proyectos">
-        <TitleSection title="Mis proyectos" />
-    </div>
+<div class="mt-40 mb-20 flex min-h-screen flex-col items-center justify-center gap-15" id="proyectos">
+    <TitleSection title="Mis proyectos" />
 
-    <div class="size-10 bg-red-200"></div>
     <section class="flex flex-col items-center justify-center gap-15 md:flex-row">
         {
             PROYECTOS.map(({ title, description, image, tecnologias, link }: Proyecto) => (
@@ -65,7 +62,7 @@ const PROYECTOS = [
             ))
         }
     </section>
-</section>
+</div>
 
 <style>
     .float-card {
