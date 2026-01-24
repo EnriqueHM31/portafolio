@@ -9,3 +9,7 @@ a,
 span {
     font-family: 'Montserrat Variable', sans-serif !important;
 }
+
+section {
+    scroll-margin-top: 150px;
+}
