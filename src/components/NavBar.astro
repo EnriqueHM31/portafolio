@@ -61,14 +61,7 @@ const LINKS = [
 
 <script is:inline>
     function scrollToSection(id) {
-        const navHeight = 96; // altura aproximada del navbar
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const y = el.getBoundingClientRect().top + window.scrollY - navHeight;
-
-        window.scrollTo({
-            top: y,
+        document.getElementById(id)?.scrollIntoView({
             behavior: "smooth",
         });
     }
@@ -82,10 +75,14 @@ const LINKS = [
         return section;
     });
 
+    console.log({ sections });
+
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
+                console.log({ entry });
                 const btn = document.querySelector(`.nav-btn[data-id="${entry.target.id}"]`);
+                console.log({ btn });
 
                 if (!btn) return;
 
