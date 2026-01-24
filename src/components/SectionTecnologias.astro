@@ -14,10 +14,11 @@ import Css from "./Iconos/Css.astro";
 ---
 
 <!-- From Uiverse.io by ilkhoeri -->
-<section class="wrapper my-50 min-h-screen">
-    <div class="inner" style="--quantity: 10;">
+<section class="wrapper relative mb-20 min-h-screen">
+    <div id="tecnologias" class="absolute top-1/8 size-30"></div>
+    <div class="inner" style="--quantity: 11;">
         <div class="center-text">
-            <TitleSection title="Herramientas de trabajo" />
+            <TitleSection title="Mis herramientas de trabajo" />
         </div>
 
         <picture class="card" style="--index: 0;--color-card: 0, 107, 201;">
@@ -50,7 +51,7 @@ import Css from "./Iconos/Css.astro";
                 <Javascript />
             </div>
         </picture>
-        <picture class="card" style="--index: 5;--color-card: 255, 255, 255;">
+        <picture class="card" style="--index: 5;--color-card: 115, 35, 235;">
             <div class="img">
                 <p class="text-2xl font-bold text-white">Astro</p>
                 <IcAstro />
@@ -97,9 +98,9 @@ import Css from "./Iconos/Css.astro";
         align-items: center;
         justify-content: center;
 
-        font-size: clamp(2rem, 10vw, 5rem);
-        font-weight: 700;
-        letter-spacing: 0.15em;
+        font-size: clamp(2rem, 10vw, 10rem) !important;
+        font-weight: bold;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
 
         color: white;
@@ -125,8 +126,8 @@ import Css from "./Iconos/Css.astro";
 
     .inner {
         --w: 200px;
-        --h: 250px;
-        --translateZ: calc((var(--w) + var(--h)) - 10px);
+        --h: 230px;
+        --translateZ: calc((var(--w) + var(--h)) + 10px);
         --rotateX: -15deg;
         --perspective: 1000px;
         position: absolute;
@@ -144,7 +145,7 @@ import Css from "./Iconos/Css.astro";
             transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0);
         }
         to {
-            transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1.5turn);
+            transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1.2turn);
         }
     }
 
