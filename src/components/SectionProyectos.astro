@@ -1,4 +1,5 @@
 ---
+import SectionIconTecnologias from "./SectionIconTecnologias.astro";
 import TitleSection from "./TitleSection.astro";
 interface Proyecto {
     title: string;
@@ -9,36 +10,45 @@ interface Proyecto {
 }
 const PROYECTOS = [
     {
-        title: "Haz que las cosas floten en el aire",
-        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        title: "Geolocalización de una IP",
+        description:
+            "Este proyecto consiste en la creación de una aplicación web que permite obtener la geolocalización de una IP",
         image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        tecnologias: ["React", "CSS", "HTML", "Tailwind", "TypeScript"],
         link: "/proyectos/Geolocalizaciond-de-una-ip",
     },
     {
-        title: "Haz que las cosas floten en el aire",
-        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        title: "Aplicación del clima",
+        description:
+            "Este proyecto consiste en la creación de una aplicación web que permite obtener el clima  de una ciudad por dias",
         image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        tecnologias: ["React", "CSS", "HTML", "Tailwind", "TypeScript"],
         link: "/proyectos/Aplicacion-del-clima",
     },
     {
-        title: "Haz que las cosas floten en el sol",
-        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        title: "Blog de los status HTTP",
+        description: "Este proyecto consiste en mostrar informacion sobre los status HTTP desde los 100 hasta 599",
         image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        tecnologias: ["Astro", "HTML", "CSS", "Tailwind", "TypeScript"],
+        link: "/proyectos/http-codes-status",
+    },
+    {
+        title: "Una API REST para proyectos",
+        description:
+            "Servicio backend encargado de registrar y exponer los endpoints de mis proyectos para su consumo desde distintas aplicaciones.",
+        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        tecnologias: ["Node", "Express", "TypeScript"],
         link: "/proyectos/http-codes-status",
     },
 ];
 ---
 
+<TitleSection title="Mis proyectos" />
 <div class="mt-40 mb-20 flex min-h-screen flex-col items-center justify-center gap-15" id="proyectos">
-    <TitleSection title="Mis proyectos" />
-
-    <section class="flex flex-col items-center justify-center gap-15 md:flex-row">
+    <section class="flex flex-col flex-wrap items-center justify-between gap-5 gap-y-10 md:flex-row">
         {
             PROYECTOS.map(({ title, description, image, tecnologias, link }: Proyecto) => (
-                <a href={link} class="float-card h-[480px] w-[380px]">
+                <a href={link} class="float-card h-[530px] w-[380px]">
                     <div class="float-inner flex h-full w-full flex-col gap-3 rounded-[20px] border border-green-500 bg-linear-to-b from-black from-70% to-green-500 p-4 text-white">
                         <img
                             src={image}
@@ -50,12 +60,11 @@ const PROYECTOS = [
 
                         <p class="card-desc mx-auto max-w-11/12 text-sm opacity-75">{description}</p>
 
-                        <div class="card-footer mx-auto mt-auto mb-6 flex w-full max-w-11/12 items-center justify-between gap-10">
-                            <span class="link text-sm opacity-80"> Visitar Repositorio</span>
-
-                            <button class="btn cursor-pointer rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:scale-105">
-                                Inscribirse
-                            </button>
+                        <div class="card-footer mx-auto mt-auto mb-6 flex w-full max-w-11/12 flex-col justify-between gap-5">
+                            <h2 class="w-fit rounded-2xl bg-black px-3 py-2 shadow-2xl shadow-green-500">
+                                Tecnologías
+                            </h2>
+                            <SectionIconTecnologias tecnologias={tecnologias} />
                         </div>
                     </div>
                 </a>
