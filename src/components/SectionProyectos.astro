@@ -1,1 +1,142 @@
-<section class="min-h-screen" id="proyectos">proyectos</section>
+---
+import TitleSection from "./TitleSection.astro";
+interface Proyecto {
+    title: string;
+    description: string;
+    image: string;
+    tecnologias: string[];
+    link: string;
+}
+const PROYECTOS = [
+    {
+        title: "Haz que las cosas floten en el aire",
+        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        link: "/proyectos/Geolocalizaciond-de-una-ip",
+    },
+    {
+        title: "Haz que las cosas floten en el aire",
+        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        link: "/proyectos/Aplicacion-del-clima",
+    },
+    {
+        title: "Haz que las cosas floten en el sol",
+        description: "Pase el cursor sobre esta tarjeta para liberar el poder de la perspectiva CSS",
+        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        tecnologias: ["CSS", "JavaScript", "HTML", "React", "Tailwind"],
+        link: "/proyectos/http-codes-status",
+    },
+];
+---
+
+<section class="mt-40 flex min-h-screen flex-col items-center justify-center">
+    <div id="proyectos">
+        <TitleSection title="Mis proyectos" />
+    </div>
+
+    <div class="size-10 bg-red-200"></div>
+    <section class="flex flex-col items-center justify-center gap-15 md:flex-row">
+        {
+            PROYECTOS.map(({ title, description, image, tecnologias, link }: Proyecto) => (
+                <a href={link} class="float-card h-[480px] w-[380px]">
+                    <div class="float-inner flex h-full w-full flex-col gap-3 rounded-[20px] border border-green-500 bg-linear-to-b from-black from-70% to-green-500 p-4 text-white">
+                        <img
+                            src={image}
+                            alt="forest"
+                            class="card-image mx-auto mt-6 h-[220px] w-full max-w-11/12 rounded-[14px] object-cover"
+                        />
+
+                        <h3 class="card-title mx-auto w-full max-w-11/12 text-start text-xl font-bold">{title}</h3>
+
+                        <p class="card-desc mx-auto max-w-11/12 text-sm opacity-75">{description}</p>
+
+                        <div class="card-footer mx-auto mt-auto mb-6 flex w-full max-w-11/12 items-center justify-between gap-10">
+                            <span class="link text-sm opacity-80"> Visitar Repositorio</span>
+
+                            <button class="btn cursor-pointer rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition hover:scale-105">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            ))
+        }
+    </section>
+</section>
+
+<style>
+    .float-card {
+        perspective: 1200px;
+    }
+
+    .float-inner {
+        transform-style: preserve-3d;
+        transition: transform 0.2s ease;
+    }
+
+    .card-image {
+        transform: translateZ(40px);
+    }
+
+    .card-title {
+        transform: translateZ(60px);
+    }
+
+    .card-desc {
+        transform: translateZ(50px);
+    }
+
+    .card-footer {
+        transform: translateZ(70px);
+    }
+</style>
+<script>
+    import gsap from "gsap";
+
+    const cards = document.querySelectorAll(".float-card") as NodeListOf<HTMLElement>;
+
+    cards.forEach((card) => {
+        const inner = card.querySelector(".float-inner") as HTMLElement;
+
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(inner, {
+                rotateY: x / 15,
+                rotateX: -y / 15,
+                duration: 0.4,
+                ease: "power3.out",
+            });
+
+            gsap.to(inner.children, {
+                x: x / 25,
+                y: y / 25,
+                stagger: 0.03,
+                duration: 0.4,
+                ease: "power3.out",
+            });
+        });
+
+        card.addEventListener("mouseleave", () => {
+            gsap.to(inner, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 0.6,
+                ease: "power3.out",
+            });
+
+            gsap.to(inner.children, {
+                x: 0,
+                y: 0,
+                duration: 0.6,
+                ease: "power3.out",
+            });
+        });
+    });
+</script>
