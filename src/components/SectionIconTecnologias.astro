@@ -1,0 +1,79 @@
+---
+interface Props {
+    tecnologias: string[];
+}
+
+const { tecnologias } = Astro.props;
+
+// Mapa de tecnologías → iconos
+import React from "./Iconos/React.astro";
+import Javascript from "./Iconos/Javascript.astro";
+import Html from "./Iconos/Html.astro";
+import Css from "./Iconos/Css.astro";
+import Tailwind from "./Iconos/Tailwind.astro";
+import Typescript from "./Iconos/Typescript.astro";
+import Node from "./Iconos/Node.astro";
+import IcAstro from "./Iconos/IcAstro.astro";
+import Express from "./Iconos/Express.astro";
+
+const ICONS: Record<string, any> = {
+    React,
+    JavaScript: Javascript,
+    HTML: Html,
+    CSS: Css,
+    Tailwind,
+    TypeScript: Typescript,
+    Node,
+    Astro: IcAstro,
+    Express,
+};
+---
+
+<div class="tech-icons">
+    {
+        tecnologias.map((tech) => {
+            const Icon = ICONS[tech];
+            return Icon ? (
+                <div class="tech-icon" title={tech}>
+                    <Icon />
+                </div>
+            ) : null;
+        })
+    }
+</div>
+
+<style>
+    .tech-icons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .tech-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 12px;
+        background-image: linear-gradient(to bottom, rgb(24, 23, 23), rgba(13, 223, 83, 0.678));
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .tech-icon:hover {
+        transform: translateY(-4px) scale(1.05);
+        background: rgba(255, 255, 255, 0.12);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .tech-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+</style>
