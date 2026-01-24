@@ -1,10 +1,15 @@
 ---
 import SectionIconTecnologias from "./SectionIconTecnologias.astro";
 import TitleSection from "./TitleSection.astro";
+import IMAGEN1 from "../assets/ip-geo.png";
+import IMAGEN2 from "../assets/clima.png";
+import IMAGEN3 from "../assets/http-status.png";
+import IMAGEN4 from "../assets/api-rest.png";
+
 interface Proyecto {
     title: string;
     description: string;
-    image: string;
+    image: any;
     tecnologias: string[];
     link: string;
 }
@@ -13,7 +18,7 @@ const PROYECTOS = [
         title: "Geolocalización de una IP",
         description:
             "Este proyecto consiste en la creación de una aplicación web que permite obtener la geolocalización de una IP",
-        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        image: IMAGEN1,
         tecnologias: ["React", "CSS", "HTML", "Tailwind", "TypeScript"],
         link: "/proyectos/Geolocalizaciond-de-una-ip",
     },
@@ -21,14 +26,14 @@ const PROYECTOS = [
         title: "Aplicación del clima",
         description:
             "Este proyecto consiste en la creación de una aplicación web que permite obtener el clima  de una ciudad por dias",
-        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        image: IMAGEN2,
         tecnologias: ["React", "CSS", "HTML", "Tailwind", "TypeScript"],
         link: "/proyectos/Aplicacion-del-clima",
     },
     {
         title: "Blog de los status HTTP",
         description: "Este proyecto consiste en mostrar informacion sobre los status HTTP desde los 100 hasta 599",
-        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        image: IMAGEN3,
         tecnologias: ["Astro", "HTML", "CSS", "Tailwind", "TypeScript"],
         link: "/proyectos/http-codes-status",
     },
@@ -36,7 +41,7 @@ const PROYECTOS = [
         title: "Una API REST para proyectos",
         description:
             "Servicio backend encargado de registrar y exponer los endpoints de mis proyectos para su consumo desde distintas aplicaciones.",
-        image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+        image: IMAGEN4,
         tecnologias: ["Node", "Express", "TypeScript"],
         link: "/proyectos/http-codes-status",
     },
@@ -48,12 +53,12 @@ const PROYECTOS = [
     <section class="flex flex-col flex-wrap items-center justify-between gap-5 gap-y-10 md:flex-row">
         {
             PROYECTOS.map(({ title, description, image, tecnologias, link }: Proyecto) => (
-                <a href={link} class="float-card h-[530px] w-[380px]">
+                <a href={link} class="float-card h-[530px] w-[370px]">
                     <div class="float-inner flex h-full w-full flex-col gap-3 rounded-[20px] border border-green-500 bg-linear-to-b from-black from-70% to-green-500 p-4 text-white">
                         <img
-                            src={image}
+                            src={image.src}
                             alt="forest"
-                            class="card-image mx-auto mt-6 h-[220px] w-full max-w-11/12 rounded-[14px] object-cover"
+                            class="card-image mx-auto mt-6 h-[300px] w-full max-w-11/12 rounded-[14px] bg-black object-contain"
                         />
 
                         <h3 class="card-title mx-auto w-full max-w-11/12 text-start text-xl font-bold">{title}</h3>
@@ -80,7 +85,11 @@ const PROYECTOS = [
 
     .float-inner {
         transform-style: preserve-3d;
-        transition: transform 0.2s ease;
+        transition: all 0.2s ease;
+    }
+
+    .float-inner:hover {
+        box-shadow: 0 10px 25px rgb(26, 241, 6);
     }
 
     .card-image {
