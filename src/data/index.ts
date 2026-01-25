@@ -1,9 +1,9 @@
 import EMAIL from "@/components/Iconos/Email.astro";
 import GITHUB from "@/components/Iconos/GitHub.astro";
-import IMAGEN1 from "@/assets/ip-geo.png";
-import IMAGEN2 from "@/assets/clima.png";
-import IMAGEN3 from "@/assets/http-status.png";
-import IMAGEN4 from "@/assets/api-rest.png";
+import IMAGEN1 from "@/assets/ip-geo.webp";
+import IMAGEN2 from "@/assets/clima.webp";
+import IMAGEN3 from "@/assets/http-status.webp";
+import IMAGEN4 from "@/assets/api-rest.webp";
 
 export const LINKS = [
     { name: "Inicio", id: "home" },
