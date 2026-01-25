@@ -1,12 +1,6 @@
 ---
 import FONDOIMAGEN from "@/assets/fondo.png";
-import EMAIL from "@/components/Iconos/Email.astro";
-import GITHUB from "@/components/Iconos/GitHub.astro";
-
-const RedesSociales = [
-    { name: "Github", link: "https://github.com/EnriqueHM31", Icon: GITHUB },
-    { name: "Email", link: "mailto:luisenriquehernandezmarin0@gmail.com", Icon: EMAIL },
-] as const;
+import { RedesSociales } from "@/data";
 ---
 
 <section class="relative flex min-h-screen flex-col items-center justify-center gap-10 md:flex-row" id="home">
@@ -50,7 +44,6 @@ const RedesSociales = [
             2px 5px 2px rgba(1, 255, 22, 0.966),
             2px 5px 2px rgb(30, 255, 0);
     }
-    /* From Uiverse.io by david-mohseni */
     .wrapper {
         display: flex;
         list-style: none;
