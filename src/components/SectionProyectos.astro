@@ -1,10 +1,9 @@
 ---
-import SectionIconTecnologias from "./SectionIconTecnologias.astro";
-import TitleSection from "./TitleSection.astro";
-import IMAGEN1 from "../assets/ip-geo.png";
+import IMAGEN4 from "../assets/api-rest.png";
 import IMAGEN2 from "../assets/clima.png";
 import IMAGEN3 from "../assets/http-status.png";
-import IMAGEN4 from "../assets/api-rest.png";
+import IMAGEN1 from "../assets/ip-geo.png";
+import SectionIconTecnologias from "./SectionIconTecnologias.astro";
 
 interface Proyecto {
     title: string;
@@ -49,7 +48,7 @@ const PROYECTOS = [
 ---
 
 <section class="5 mt-40 mb-20 flex min-h-screen flex-col items-center justify-start" id="proyectos">
-    <h2 class="text-5xl font-bold text-white">Mis proyectos</h2>
+    <h2 class="title-section text-5xl font-bold text-white">Mis proyectos</h2>
     <section class="mt-10 flex flex-col flex-wrap items-center justify-center gap-10 gap-y-10 md:flex-row">
         {
             PROYECTOS.map(({ title, description, image, tecnologias, link }: Proyecto) => (
@@ -123,7 +122,7 @@ const PROYECTOS = [
 
     const cards = document.querySelectorAll(".float-card") as NodeListOf<HTMLElement>;
 
-    gsap.to("h2", {
+    gsap.to(".title-section", {
         scrollTrigger: {
             trigger: "h2",
             start: "top 100%",
