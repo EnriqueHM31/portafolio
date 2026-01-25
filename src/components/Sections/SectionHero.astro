@@ -1,7 +1,7 @@
 ---
+import FONDOIMAGEN from "@/assets/fondo.png";
 import EMAIL from "@/components/Iconos/Email.astro";
 import GITHUB from "@/components/Iconos/GitHub.astro";
-import FONDOIMAGEN from "@/assets/fondo.png";
 
 const RedesSociales = [
     { name: "Github", link: "https://github.com/EnriqueHM31", Icon: GITHUB },
@@ -124,11 +124,10 @@ const RedesSociales = [
 </style>
 <script>
     import gsap from "gsap";
-    import SplitText from "gsap/SplitText";
+    import { SplitText } from "gsap/SplitText";
     import { ScrollTrigger } from "gsap/ScrollTrigger";
 
     gsap.registerPlugin(SplitText, ScrollTrigger);
-
     document.fonts.ready.then(() => {
         // =========================
         // SPLIT TEXT
